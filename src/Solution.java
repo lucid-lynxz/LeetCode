@@ -1,7 +1,8 @@
-import com.sun.org.apache.regexp.internal.REUtil;
-import com.sun.xml.internal.ws.api.pipe.NextAction;
+import bean.ListNode;
+import bean.TreeNode;
 
 import java.util.*;
+
 
 public class Solution {
 
@@ -188,13 +189,6 @@ public class Solution {
         return true;
     }
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println("---> abc: " + solution.longestPalindrome2("abc"));
-        System.out.println("---> a: " + solution.longestPalindrome2("a"));
-        System.out.println("---> abb: " + solution.longestPalindrome2("abb"));
-    }
-
 
     public String longestPalindrome2(String s) {
         String maxString = null;
@@ -231,6 +225,20 @@ public class Solution {
 
     /**
      * 6. Z 字形变换
+     * 将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行Z 字形排列。
+     * 比如输入字符串为 "PAYPALISHIRING"行数为 3 时，排列如下：
+     * P   A   H   N
+     * A P L S I I G
+     * Y   I   R
+     * 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："PAHNAPLSIIGYIR"。
+     * 请你实现这个将字符串进行指定行数变换的函数：
+     * string convert(string s, int numRows);
+     * 示例 1：
+     * 输入：s = "PAYPALISHIRING", numRows = 3
+     * 输出："PAHNAPLSIIGYIR"
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/zigzag-conversion
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      */
     public String convert(String s, int numRows) {
         if (numRows == 1) {
@@ -641,41 +649,6 @@ public class Solution {
     }
 
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
-    public ListNode makeListNode(int... arr) {
-        int len = arr.length;
-        if (len == 0) {
-            return null;
-        }
-
-        ListNode current = new ListNode();
-        ListNode head = current;
-        for (int i = 0; i < len; i++) {
-            current.val = arr[i];
-            if (i != len - 1) {
-                current.next = new ListNode();
-                current = current.next;
-            }
-        }
-        return head;
-    }
-
     /**
      * 21. 合并两个有序链表
      * 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
@@ -866,7 +839,7 @@ public class Solution {
                 left = mid + 1; // left同理, 需要在mid的基础上再加1
             }
         }
-        System.out.println(getArrStr(nums) + ",index=" + ans);
+        System.out.println(Arrays.toString(nums) + ",index=" + ans);
         return ans;
 
 
@@ -912,31 +885,6 @@ public class Solution {
 //        return mid;
     }
 
-    private <T> String getArrStr(T[] arr) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < arr.length; i++) {
-            sb.append(arr[i]);
-            if (i != arr.length - 1) {
-                sb.append(",");
-            }
-        }
-        sb.append("]");
-        return sb.toString();
-    }
-
-    private String getArrStr(int[] arr) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < arr.length; i++) {
-            sb.append(arr[i]);
-            if (i != arr.length - 1) {
-                sb.append(",");
-            }
-        }
-        sb.append("]");
-        return sb.toString();
-    }
 
     /**
      * 53. 最大子数组和
@@ -972,7 +920,7 @@ public class Solution {
         for (int i = 0; i < len; i++) {
             max = Math.max(max, dp[i]);
         }
-        System.out.println(getArrStr(nums) + "  max=" + max);
+        System.out.println(Arrays.toString(nums) + "  max=" + max);
         return max;
     }
 
@@ -1039,7 +987,7 @@ public class Solution {
             result = new int[len + 1];
             result[0] = 1;
         }
-        System.out.println(getArrStr(result));
+        System.out.println(Arrays.toString(result));
         return result;
     }
 
@@ -1166,7 +1114,7 @@ public class Solution {
 //        return size;
     }
 
-    private Map<Integer, Integer> memoFab = new HashMap<>();
+    private final Map<Integer, Integer> memoFab = new HashMap<>();
 
     public int fab(int n) {
         Integer integer = memoFab.get(n);
@@ -1263,6 +1211,34 @@ public class Solution {
             ptrAns--;
         }
 
-        System.out.println(getArrStr(nums1));
+        System.out.println(Arrays.toString(nums1));
     }
+
+    /**
+     * 94. 二叉树的中序遍历
+     * 给定一个二叉树的根节点 root ，返回 它的 中序 遍历 。
+     * 示例 1：
+     * 输入：root = [1,null,2,3]
+     * 输出：[1,3,2]
+     */
+    public List<Integer> inorderTraversal(TreeNode root) {
+        // 前序遍历: 根->左->右
+        // 中序遍历: 左->根->右
+        // 后序遍历: 左->右->根
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return list; // 由于题目要求输入null节点,返回空列表, 因此此处不能返回null
+        }
+
+        // 递归遍历左子树
+        list.addAll(inorderTraversal(root.left));
+
+        // 输出根节点
+        list.add(root.val);
+
+        // 遍历右子树
+        list.addAll(inorderTraversal(root.right));
+        return list;
+    }
+
 }

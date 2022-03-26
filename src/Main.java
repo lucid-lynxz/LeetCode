@@ -1,3 +1,8 @@
+import bean.TreeNode;
+import util.ListUtil;
+
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -158,8 +163,21 @@ public class Main {
 //        solution.deleteDuplicates(solution.makeListNode(1, 1, 2, 3, 3)); // 1,2,3
 
         //88. 合并两个有序数组
-        solution.merge(new int[]{1, 2, 3, 0, 0, 0},3, new int[]{2, 5, 6}, 3); //1,2,2,3,5,6
-        solution.merge(new int[]{1},1, new int[]{}, 0); //1
+//        solution.merge(new int[]{1, 2, 3, 0, 0, 0},3, new int[]{2, 5, 6}, 3); //1,2,2,3,5,6
+//        solution.merge(new int[]{1},1, new int[]{}, 0); //1
 
+        // 94. 二叉树的中序遍历
+        TreeNode root = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
+        List<Integer> list = solution.inorderTraversal(root);// 1,3,2
+        System.out.println(ListUtil.toString(list));
+
+        list = solution.inorderTraversal(null); // null
+        System.out.println(ListUtil.toString(list));
+
+        list = solution.inorderTraversal(new TreeNode(1)); // 1
+        System.out.println(ListUtil.toString(list));
+
+        list = solution.inorderTraversal(null);
+        System.out.println(ListUtil.toString(list));
     }
 }
