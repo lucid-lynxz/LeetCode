@@ -1,7 +1,4 @@
 import bean.TreeNode;
-import util.ListUtil;
-
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -167,17 +164,38 @@ public class Main {
 //        solution.merge(new int[]{1},1, new int[]{}, 0); //1
 
         // 94. 二叉树的中序遍历
-        TreeNode root = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
-        List<Integer> list = solution.inorderTraversal(root);// 1,3,2
-        System.out.println(ListUtil.toString(list));
+//        TreeNode root = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
+//        List<Integer> list = solution.inorderTraversal(root);// 1,3,2
+//        System.out.println(ListUtil.toString(list));
+//
+//        list = solution.inorderTraversal(null); // null
+//        System.out.println(ListUtil.toString(list));
+//
+//        list = solution.inorderTraversal(new TreeNode(1)); // 1
+//        System.out.println(ListUtil.toString(list));
+//
+//        list = solution.inorderTraversal(null);
+//        System.out.println(ListUtil.toString(list));
 
-        list = solution.inorderTraversal(null); // null
-        System.out.println(ListUtil.toString(list));
+        // 100. 相同的树
+        TreeNode pRoot = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
+        TreeNode qRoot = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
+        boolean isSameTree = solution.isSameTree(pRoot, qRoot);// true
+        System.out.println(isSameTree);
 
-        list = solution.inorderTraversal(new TreeNode(1)); // 1
-        System.out.println(ListUtil.toString(list));
+        pRoot = new TreeNode(1, new TreeNode(2, null, null), new TreeNode(3, null, null)); //  1,2,3
+        qRoot = new TreeNode(1, new TreeNode(2, null, null), new TreeNode(3, null, null)); //  1,2,3
+        isSameTree = solution.isSameTree(pRoot, qRoot);// true
+        System.out.println(isSameTree);
 
-        list = solution.inorderTraversal(null);
-        System.out.println(ListUtil.toString(list));
+        pRoot = new TreeNode(1, new TreeNode(2, null, null), null); //  1,2
+        qRoot = new TreeNode(1, null, new TreeNode(2, null, null)); //  1,null,2
+        isSameTree = solution.isSameTree(pRoot, qRoot);// false
+        System.out.println(isSameTree);
+
+        pRoot = new TreeNode(1, new TreeNode(1, null, null), null); //  1,1
+        qRoot = new TreeNode(1, null, new TreeNode(1, null, null)); //  1,null,1
+        isSameTree = solution.isSameTree(pRoot, qRoot);// false
+        System.out.println(isSameTree);
     }
 }
