@@ -1329,6 +1329,37 @@ public class Solution {
     }
 
     /**
+     * 102. 二叉树的层序遍历
+     * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        levelOrderImpl(root, result, 0);
+        return result;
+    }
+
+    private void levelOrderImpl(TreeNode root, List<List<Integer>> result, int index) {
+        if (root == null) {
+            return;
+        }
+
+        int size = result.size();
+        List<Integer> list;
+        if (index >= size) {
+            list = new ArrayList<>();
+            result.add(list);
+        } else {
+            list = result.get(index);
+        }
+        list.add(root.val);
+
+        // 获取下一层数据
+        levelOrderImpl(root.left, result, index + 1);
+        levelOrderImpl(root.right, result, index + 1);
+    }
+
+
+    /**
      * 108. 将有序数组转换为二叉搜索树
      * https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/
      * 给你一个整数数组 nums ，其中元素已经按 升序 排列，请你将其转换为一棵 高度平衡 二叉搜索树。
