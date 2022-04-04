@@ -1297,6 +1297,7 @@ public class Solution {
     }
 
     /**
+     * 101. 对称二叉树
      * https://leetcode-cn.com/problems/symmetric-tree/
      * 给你一个二叉树的根节点 root ， 检查它是否轴对称。
      * 示例 1：
@@ -1325,6 +1326,43 @@ public class Solution {
             return false;
         }
         return left.val == right.val && isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
+    }
+
+    /**
+     * 108. 将有序数组转换为二叉搜索树
+     * https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/
+     * 给你一个整数数组 nums ，其中元素已经按 升序 排列，请你将其转换为一棵 高度平衡 二叉搜索树。
+     * <p>
+     * 高度平衡 二叉树是一棵满足「每个节点的左右两个子树的高度差的绝对值不超过 1 」的二叉树。
+     * 示例 1：
+     * 输入：nums = [-10,-3,0,5,9]
+     * 输出：[0,-3,9,-10,null,5]
+     * 解释：[0,-10,5,null,-3,null,9] 也将被视为正确答案
+     * 提示：
+     * 1 <= nums.length <= 104
+     * -104 <= nums[i] <= 104
+     * nums 按 严格递增 顺序排列
+     */
+    public TreeNode sortedArrayToBST(int[] nums) {
+        TreeNode root = sortedArrayToBSTHelper(nums, 0, nums.length - 1);
+//        // 中序遍历,打印方便查看
+//        List<Integer> integers = inorderTraversal(root);
+//        String s = ListUtil.toString(integers);
+//        System.out.println(s);
+        return root;
+    }
+
+    private TreeNode sortedArrayToBSTHelper(int[] nums, int left, int right) {
+        // 终止条件,考虑只有一个元素的情况, 则初始left==right, 需要下一轮递归才能终止
+        if (left > right) {
+            return null;
+        }
+        // 提取数组中间元素作为root节点
+        int mid = (left + right) / 2; // 偶数-中间靠左  奇数-中间
+        TreeNode node = new TreeNode(nums[mid]);// root节点
+        node.left = sortedArrayToBSTHelper(nums, left, mid - 1);
+        node.right = sortedArrayToBSTHelper(nums, mid + 1, right);
+        return node;
     }
 
     /**

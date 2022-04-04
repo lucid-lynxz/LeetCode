@@ -1,5 +1,3 @@
-import bean.TreeNode;
-
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -178,24 +176,27 @@ public class Main {
 //        System.out.println(ListUtil.toString(list));
 
         // 100. 相同的树
-        TreeNode pRoot = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
-        TreeNode qRoot = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
-        boolean isSameTree = solution.isSameTree(pRoot, qRoot);// true
-        System.out.println(isSameTree);
+//        TreeNode pRoot = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
+//        TreeNode qRoot = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
+//        boolean isSameTree = solution.isSameTree(pRoot, qRoot);// true
+//        System.out.println(isSameTree);
+//
+//        pRoot = new TreeNode(1, new TreeNode(2, null, null), new TreeNode(3, null, null)); //  1,2,3
+//        qRoot = new TreeNode(1, new TreeNode(2, null, null), new TreeNode(3, null, null)); //  1,2,3
+//        isSameTree = solution.isSameTree(pRoot, qRoot);// true
+//        System.out.println(isSameTree);
+//
+//        pRoot = new TreeNode(1, new TreeNode(2, null, null), null); //  1,2
+//        qRoot = new TreeNode(1, null, new TreeNode(2, null, null)); //  1,null,2
+//        isSameTree = solution.isSameTree(pRoot, qRoot);// false
+//        System.out.println(isSameTree);
+//
+//        pRoot = new TreeNode(1, new TreeNode(1, null, null), null); //  1,1
+//        qRoot = new TreeNode(1, null, new TreeNode(1, null, null)); //  1,null,1
+//        isSameTree = solution.isSameTree(pRoot, qRoot);// false
+//        System.out.println(isSameTree);
 
-        pRoot = new TreeNode(1, new TreeNode(2, null, null), new TreeNode(3, null, null)); //  1,2,3
-        qRoot = new TreeNode(1, new TreeNode(2, null, null), new TreeNode(3, null, null)); //  1,2,3
-        isSameTree = solution.isSameTree(pRoot, qRoot);// true
-        System.out.println(isSameTree);
-
-        pRoot = new TreeNode(1, new TreeNode(2, null, null), null); //  1,2
-        qRoot = new TreeNode(1, null, new TreeNode(2, null, null)); //  1,null,2
-        isSameTree = solution.isSameTree(pRoot, qRoot);// false
-        System.out.println(isSameTree);
-
-        pRoot = new TreeNode(1, new TreeNode(1, null, null), null); //  1,1
-        qRoot = new TreeNode(1, null, new TreeNode(1, null, null)); //  1,null,1
-        isSameTree = solution.isSameTree(pRoot, qRoot);// false
-        System.out.println(isSameTree);
+        // 108. 将有序数组转换为二叉搜索树
+        solution.sortedArrayToBST(new int[]{-10, -3, 0, 5, 9});
     }
 }
