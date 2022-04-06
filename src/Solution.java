@@ -1358,6 +1358,39 @@ public class Solution {
         levelOrderImpl(root.right, result, index + 1);
     }
 
+    /**
+     * 107. 二叉树的层序遍历 II
+     * https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/
+     */
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        // BFS 广度优先算法, 与102题类似,顺序相反而已, 因此依然是list存储,每次往list开头插入即可
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                list.add(node.val);
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            res.add(0, list);
+        }
+        return res;
+    }
+
 
     /**
      * 108. 将有序数组转换为二叉搜索树
