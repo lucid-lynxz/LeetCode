@@ -1430,6 +1430,38 @@ public class Solution {
     }
 
     /**
+     * 110. 平衡二叉树
+     * https://leetcode-cn.com/problems/balanced-binary-tree/
+     * 给定一个二叉树，判断它是否是高度平衡的二叉树。
+     * 本题中，一棵高度平衡二叉树定义为：
+     * 一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1
+     */
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        // 递归终止条件:
+        // 左右子树高度差大于等于2 -> 非平衡子树
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        int dL = height(left); // 左子树高度
+        int dR = height(right); // 右子树高度
+        return Math.abs(dL - dR) < 2 && isBalanced(left) && isBalanced(right);
+    }
+
+    /**
+     * 求树的高度
+     */
+    private int height(TreeNode root) {
+        if (root == null) { // 叶节点, 高度为0
+            return 0;
+        }
+        // 左右子树最大高度再加1就是当前节点为root节点的树高
+        return Math.max(height(root.left), height(root.right)) + 1;
+    }
+
+    /**
      * 111. 二叉树的最小深度
      * 给定一个二叉树，找出其最小深度。
      * 最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
