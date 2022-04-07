@@ -1435,6 +1435,8 @@ public class Solution {
      * 给定一个二叉树，判断它是否是高度平衡的二叉树。
      * 本题中，一棵高度平衡二叉树定义为：
      * 一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1
+     * <p>
+     * 解法1: 自顶向下递归,依次计算所有节点的树高,比较左右子树高度差是否小于2
      */
     public boolean isBalanced(TreeNode root) {
         if (root == null) {
@@ -1459,6 +1461,35 @@ public class Solution {
         }
         // 左右子树最大高度再加1就是当前节点为root节点的树高
         return Math.max(height(root.left), height(root.right)) + 1;
+    }
+
+    /**
+     * 110. 平衡二叉树
+     * https://leetcode-cn.com/problems/balanced-binary-tree/
+     * 解法2: 自底向上
+     */
+    public boolean isBalanced2(TreeNode root) {
+        isBalance2Helper(root);
+        return isBalanced2Flag;
+    }
+
+    boolean isBalanced2Flag = true;
+
+    public int isBalance2Helper(TreeNode root) {
+        if (root == null) { // 叶节点高度返回0
+            return 0;
+        }
+
+        if (!isBalanced2Flag) { // 若已发现非平衡树,则直接返回, 结果数字不重要
+            return 0;
+        }
+        int left = isBalance2Helper(root.left) + 1; // 左子树高度
+        int right = isBalance2Helper(root.right) + 1; // 右子树高度
+        int abs = Math.abs(left - right);
+        if (abs >= 2) { // 左右子树高度差大于1,则此树为非平衡树
+            isBalanced2Flag = false;
+        }
+        return Math.max(left, right); // 返回树高
     }
 
     /**
