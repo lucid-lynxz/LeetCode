@@ -1,3 +1,5 @@
+import util.TreeNodeUtil;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -197,6 +199,11 @@ public class Main {
 //        System.out.println(isSameTree);
 
         // 108. 将有序数组转换为二叉搜索树
-        solution.sortedArrayToBST(new int[]{-10, -3, 0, 5, 9});
+//        solution.sortedArrayToBST(new int[]{-10, -3, 0, 5, 9});
+
+        // 112
+        solution.hasPathSum(solution.sortedArrayToBST(new int[]{1, 2}), 1, false);
+        solution.hasPathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{-2, null, -3}), -5, true);
+        solution.hasPathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, -2, -3, 1, 3, -2, null, -1}), -1, true);
     }
 }

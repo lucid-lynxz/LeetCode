@@ -1530,4 +1530,32 @@ public class Solution {
         return Math.min(minDepth(node.left, depth + 1), minDepth(node.right, depth + 1));
     }
 
+    /**
+     * 112. 路径总和
+     * https://leetcode-cn.com/problems/path-sum/
+     * <p>
+     * [1,2] 求和1 -> false
+     * [-2,null,-3]  -5 -> true
+     * [1,-2,-3,1,3,-2,null,-1] -1 -> true
+     */
+    public boolean hasPathSum(TreeNode root, int targetSum, boolean expected) {
+        boolean b = hasPathSum(root, targetSum, 0);
+        System.out.println("hasPathSum:" + inorderTraversal(root) + ",expected=" + expected + ",result=" + b);
+        return b;
+    }
+
+    public boolean hasPathSum(TreeNode root, int targetSum, int sum) {
+        if (root == null) {
+            return false;
+        }
+
+        sum += root.val;
+        if (root.left == null && root.right == null) { // 叶子节点
+            return sum == targetSum;
+        }
+
+        return hasPathSum(root.left, targetSum, sum) || hasPathSum(root.right, targetSum, sum);
+    }
+
+
 }
