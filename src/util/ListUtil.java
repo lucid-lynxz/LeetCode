@@ -19,5 +19,4 @@ public class ListUtil {
         sb.append("]");
         return sb.toString();
     }
-
 }

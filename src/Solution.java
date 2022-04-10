@@ -1557,5 +1557,34 @@ public class Solution {
         return hasPathSum(root.left, targetSum, sum) || hasPathSum(root.right, targetSum, sum);
     }
 
+    /**
+     * 113. 路径总和 II
+     * https://leetcode-cn.com/problems/path-sum-ii/
+     */
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        result113.clear();
+        path113.clear();
+        pathSumDfs(root, targetSum);
+        System.out.println("pathSum: " + result113);
+        return result113;
+    }
 
+    // linkedList双向链表,删除结尾时比较方便
+    List<List<Integer>> result113 = new LinkedList<>(); // 存储结果
+    LinkedList<Integer> path113 = new LinkedList<>(); // 存储当前计算路径
+
+    private void pathSumDfs(TreeNode root, int targetSum) {
+        if (root == null) {
+            return;
+        }
+
+        path113.offerLast(root.val); // 添加当前元素
+        targetSum -= root.val;
+        if (root.left == null && root.right == null && targetSum == 0) { // 叶子节点且满足求和要求
+            result113.add(new LinkedList<>(path113)); // 创建一个新链表,加到结果list中
+        }
+        pathSumDfs(root.left, targetSum);
+        pathSumDfs(root.right, targetSum);
+        path113.pollLast();
+    }
 }

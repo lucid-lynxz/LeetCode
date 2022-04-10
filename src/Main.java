@@ -201,9 +201,14 @@ public class Main {
         // 108. 将有序数组转换为二叉搜索树
 //        solution.sortedArrayToBST(new int[]{-10, -3, 0, 5, 9});
 
-        // 112
-        solution.hasPathSum(solution.sortedArrayToBST(new int[]{1, 2}), 1, false);
-        solution.hasPathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{-2, null, -3}), -5, true);
-        solution.hasPathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, -2, -3, 1, 3, -2, null, -1}), -1, true);
+        // 112. 路径总和
+//        solution.hasPathSum(solution.sortedArrayToBST(new int[]{1, 2}), 1, false);
+//        solution.hasPathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{-2, null, -3}), -5, true);
+//        solution.hasPathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, -2, -3, 1, 3, -2, null, -1}), -1, true);
+
+        // 113. 路径总和②
+        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1}), 22); // [[5,4,11,2],[5,8,4,5]]
+        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 2, 3}), 5); // []
+        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 2}), 0); // []
     }
 }
