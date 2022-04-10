@@ -1,5 +1,3 @@
-import util.TreeNodeUtil;
-
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -207,8 +205,12 @@ public class Main {
 //        solution.hasPathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, -2, -3, 1, 3, -2, null, -1}), -1, true);
 
         // 113. 路径总和②
-        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1}), 22); // [[5,4,11,2],[5,8,4,5]]
-        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 2, 3}), 5); // []
-        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 2}), 0); // []
+//        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1}), 22); // [[5,4,11,2],[5,8,4,5]]
+//        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 2, 3}), 5); // []
+//        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 2}), 0); // []
+
+        // 118. 杨辉三角
+        solution.generate(5); // [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+        solution.generate(1); // [[1]]
     }
 }

@@ -1587,4 +1587,30 @@ public class Solution {
         pathSumDfs(root.right, targetSum);
         path113.pollLast();
     }
+
+    /**
+     * 118. 杨辉三角
+     * https://leetcode-cn.com/problems/pascals-triangle/
+     */
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<>();
+            row.add(1); // 行首元素
+
+            if (i >= 2) {
+                List<Integer> preRow = res.get(res.size() - 1);
+                for (int j = 1; j < i; j++) {
+                    row.add(preRow.get(j - 1) + preRow.get(j));
+                }
+            }
+
+            if (i >= 1) {
+                row.add(1); // 行尾元素
+            }
+            res.add(row);
+        }
+        System.out.println("numRows=" + numRows + ": " + res);
+        return res;
+    }
 }
