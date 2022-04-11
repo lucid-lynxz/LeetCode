@@ -214,8 +214,12 @@ public class Main {
 //        solution.generate(1); // [[1]]
 
         // 119. 杨辉三角 II
-        solution.getRow(3); // [1,3,3,1]
-        solution.getRow(0); // [1]
-        solution.getRow(1); // [1,1]
+//        solution.getRow(3); // [1,3,3,1]
+//        solution.getRow(0); // [1]
+//        solution.getRow(1); // [1,1]
+
+        // 121. 买卖股票的最佳时机
+        solution.maxProfit(new int[]{7, 1, 5, 3, 6, 4}); // 5
+        solution.maxProfit(new int[]{7, 6, 4, 3, 1}); // 0
     }
 }
