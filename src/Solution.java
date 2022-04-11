@@ -1634,13 +1634,13 @@ public class Solution {
      * 注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票
      */
     public int maxProfit(int[] prices) {
-        int max = 0;
-        for (int i = 0; i < prices.length - 1; i++) {
-            for (int j = i + 1; j < prices.length; j++) {
-                max = Math.max(max, prices[j] - prices[i]);
-            }
+        int maxProfit = 0;
+        int minPrice = Integer.MAX_VALUE;
+        for (int i = 0; i < prices.length; i++) {
+            minPrice = Math.min(minPrice, prices[i]);
+            maxProfit = Math.max(maxProfit, prices[i] - minPrice);
         }
-        System.out.println("maxProfit=" + max);
-        return max;
+        System.out.println("maxProfit=" + maxProfit);
+        return maxProfit;
     }
 }
