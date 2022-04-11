@@ -1610,7 +1610,18 @@ public class Solution {
             }
             res.add(row);
         }
-        System.out.println("numRows=" + numRows + ": " + res);
+        // System.out.println("numRows=" + numRows + ": " + res);
         return res;
+    }
+
+    /**
+     * 119. 杨辉三角 II
+     * https://leetcode-cn.com/problems/pascals-triangle-ii/
+     */
+    public List<Integer> getRow(int rowIndex) {
+        List<List<Integer>> res = generate(rowIndex + 1);
+        List<Integer> ans = res.get(res.size() - 1);
+        System.out.println("rowIndex=" + rowIndex + ",ans:" + ans);
+        return ans;
     }
 }

@@ -210,7 +210,12 @@ public class Main {
 //        solution.pathSum(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 2}), 0); // []
 
         // 118. 杨辉三角
-        solution.generate(5); // [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
-        solution.generate(1); // [[1]]
+//        solution.generate(5); // [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+//        solution.generate(1); // [[1]]
+
+        // 119. 杨辉三角 II
+        solution.getRow(3); // [1,3,3,1]
+        solution.getRow(0); // [1]
+        solution.getRow(1); // [1,1]
     }
 }
