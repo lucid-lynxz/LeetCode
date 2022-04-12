@@ -219,8 +219,13 @@ public class Main {
 //        solution.getRow(1); // [1,1]
 
         // 121. 买卖股票的最佳时机
-        solution.maxProfit(new int[]{7, 1, 5, 3, 6, 4}); // 5
-        solution.maxProfit(new int[]{7, 6, 4, 3, 1}); // 0
-        solution.maxProfit(new int[]{1, 2}); // 1
+//        solution.maxProfit(new int[]{7, 1, 5, 3, 6, 4}); // 5
+//        solution.maxProfit(new int[]{7, 6, 4, 3, 1}); // 0
+//        solution.maxProfit(new int[]{1, 2}); // 1
+
+        // 125. 验证回文串
+        solution.isPalindrome("A man, a plan, a canal: Panama"); // true
+        solution.isPalindrome("race a car"); // false
+        solution.isPalindrome(".,"); // true
     }
 }
