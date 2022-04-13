@@ -224,8 +224,12 @@ public class Main {
 //        solution.maxProfit(new int[]{1, 2}); // 1
 
         // 125. 验证回文串
-        solution.isPalindrome("A man, a plan, a canal: Panama"); // true
-        solution.isPalindrome("race a car"); // false
-        solution.isPalindrome(".,"); // true
+//        solution.isPalindrome("A man, a plan, a canal: Panama"); // true
+//        solution.isPalindrome("race a car"); // false
+//        solution.isPalindrome(".,"); // true
+
+        //136. 只出现一次的数字
+        solution.singleNumber(new int[]{2, 2, 1}); // 1
+        solution.singleNumber(new int[]{4, 1, 2, 1, 2}); // 4
     }
 }
