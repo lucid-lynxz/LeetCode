@@ -1,3 +1,5 @@
+import util.TreeNodeUtil;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -175,6 +177,12 @@ public class Main {
 //        list = solution.inorderTraversal(null);
 //        System.out.println(ListUtil.toString(list));
 
+        // 144. 二叉树的前序遍历
+        System.out.println(solution.preorderTraversal(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, null, 2, 3}))); // [1,2,3]
+        System.out.println(solution.preorderTraversal(TreeNodeUtil.arrayToTreeNode(new Integer[]{}))); // []
+        System.out.println(solution.preorderTraversal(TreeNodeUtil.arrayToTreeNode(new Integer[]{1}))); // [1]
+        System.out.println(solution.preorderTraversal(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 2}))); // [1,2]
+
         // 100. 相同的树
 //        TreeNode pRoot = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
 //        TreeNode qRoot = new TreeNode(1, null, new TreeNode(2, new TreeNode(3, null, null), null)); //  1,null,2,3
@@ -229,7 +237,7 @@ public class Main {
 //        solution.isPalindrome(".,"); // true
 
         //136. 只出现一次的数字
-        solution.singleNumber(new int[]{2, 2, 1}); // 1
-        solution.singleNumber(new int[]{4, 1, 2, 1, 2}); // 4
+//        solution.singleNumber(new int[]{2, 2, 1}); // 1
+//        solution.singleNumber(new int[]{4, 1, 2, 1, 2}); // 4
     }
 }

@@ -1242,6 +1242,27 @@ public class Solution {
     }
 
     /**
+     * 144. 二叉树的前序遍历
+     * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
+     */
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return list; // 由于题目要求输入null节点,返回空列表, 因此此处不能返回null
+        }
+
+        // 输出根节点
+        list.add(root.val);
+
+        // 递归遍历左子树
+        list.addAll(preorderTraversal(root.left));
+
+        // 遍历右子树
+        list.addAll(preorderTraversal(root.right));
+        return list;
+    }
+
+    /**
      * 100. 相同的树
      * 给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。
      * 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
