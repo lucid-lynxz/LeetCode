@@ -1241,6 +1241,33 @@ public class Solution {
         return list;
     }
 
+
+    /**
+     * 94. 二叉树的中序遍历
+     * 给定一个二叉树的根节点 root ，返回 它的 中序 遍历
+     * 解法2: 迭代解法
+     */
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+
+        // 中序遍历: 左子树 -> 中间节点 -> 右子树
+        // 栈stack: 后进先出
+        TreeNode cur = root;
+        while (!stack.isEmpty() || cur != null) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+
+            TreeNode node = stack.pop();
+            list.add(node.val);
+            cur = node.right;
+        }
+
+        return list;
+    }
+
     /**
      * 144. 二叉树的前序遍历
      * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
@@ -1261,6 +1288,69 @@ public class Solution {
         list.addAll(preorderTraversal(root.right));
         return list;
     }
+
+    /**
+     * 144. 二叉树的前序遍历
+     * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
+     */
+    public List<Integer> preorderTraversal2(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return list; // 由于题目要求输入null节点,返回空列表, 因此此处不能返回null
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        while (!stack.isEmpty() || root != null) {
+            // 优先输出根节点, 然后递归输出左子树
+            while (root != null) {
+                list.add(root.val);
+                stack.push(root);
+                root = root.left;
+            }
+
+            TreeNode node = stack.pop();
+            root = node.right;
+        }
+
+        return list;
+    }
+
+    /**
+     * 145. 二叉树的后序遍历
+     * https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
+     * <p>
+     * 递归解法参照中序/前序遍历, 本题尝试下迭代解法
+     */
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return list; // 由于题目要求输入null节点,返回空列表, 因此此处不能返回null
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode pre = null;
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;   // 递归输出左子树
+            }
+
+            TreeNode node = stack.pop(); // 左子树遍历完成
+
+            // 在输出根节点前, 需要判断是否有右子树, 若有, 则先将根节点入栈, 然后右节点入栈, 最终会先输出右子树
+            // 但判断条件若仅 if (node.right == null) {} 则在出栈时会死循环, 因此需记录之前已输出过的节点, 因此引入变量 pre
+            if (node.right == null || node.right == pre) {
+                list.add(node.val);
+                pre = node;
+            } else {
+                stack.push(node);
+                root = node.right;
+            }
+        }
+
+        return list;
+    }
+
 
     /**
      * 100. 相同的树
