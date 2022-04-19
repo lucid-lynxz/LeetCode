@@ -1820,4 +1820,43 @@ public class Solution {
         System.out.println("ans=" + ans + ",nums=" + Arrays.toString(nums));
         return ans;
     }
+
+    /**
+     * 821. 字符的最短距离
+     * https://leetcode-cn.com/problems/shortest-distance-to-a-character/
+     * 1 <= s.length <= 104
+     * s[i] 和 c 均为小写英文字母
+     * 题目数据保证 c 在 s 中至少出现一次
+     */
+    public int[] shortestToChar(String s, char c) {
+        int len = s.length();
+        int[] ans = new int[len]; // 结果数组
+
+        int cSize = 0; // 字符c出现的次数
+        int[] cArr = new int[len]; // 字符c出现的位置, 从0开始
+
+        // 提取所有字符c的位置
+        for (int i = 0; i < len; i++) {
+            char c1 = s.charAt(i);
+
+            if (c1 == c) {
+                cArr[cSize++] = i;
+            }
+        }
+
+        // 遍历数组, 计算每个字符与所有字符c的距离, 并保存最小距离
+        for (int i = 0; i < len; i++) {
+            int minDis = len;
+            for (int j = 0; j < cSize; j++) {
+                minDis = Math.min(minDis, Math.abs(i - cArr[j]));
+                if (minDis == 0) {
+                    break;
+                }
+            }
+            ans[i] = minDis;
+        }
+
+        System.out.println(Arrays.toString(ans));
+        return ans;
+    }
 }
