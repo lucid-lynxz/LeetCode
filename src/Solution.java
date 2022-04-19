@@ -1865,16 +1865,25 @@ public class Solution {
      * https://leetcode-cn.com/problems/number-of-1-bits/
      */
     public int hammingWeight(int n) {
+        // 位移运算
         int ans = 0;
-        String s = Integer.toBinaryString(n);
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '1') {
+        for (int i = 0; i < 32; i++) {
+            if ((n & (1 << i)) != 0) {
                 ans++;
             }
         }
-
-        System.out.println("ans=" + ans);
+        // System.out.println("ans=" + ans);
         return ans;
+//        int ans = 0;
+//        String s = Integer.toBinaryString(n);
+//        for (int i = 0; i < s.length(); i++) {
+//            char c = s.charAt(i);
+//            if (c == '1') {
+//                ans++;
+//            }
+//        }
+//
+//        System.out.println("ans=" + ans);
+//        return ans;
     }
 }
