@@ -239,7 +239,12 @@ public class Main {
 //        solution.singleNumber(new int[]{4, 1, 2, 1, 2}); // 4
 
         // 821. 字符的最短距离
-        solution.shortestToChar("loveleetcode", 'e'); // [3,2,1,0,1,0,0,1,2,2,1,0]
-        solution.shortestToChar("aaab", 'b'); // [3,2,1,0]
+//        solution.shortestToChar("loveleetcode", 'e'); // [3,2,1,0,1,0,0,1,2,2,1,0]
+//        solution.shortestToChar("aaab", 'b'); // [3,2,1,0]
+
+        // 191. 位1的个数
+        solution.hammingWeight(0b00000000000000000000000000001011); // 3
+        solution.hammingWeight(0b00000000000000000000000010000000); // 1
+        solution.hammingWeight(0b11111111111111111111111111111101); // 31
     }
 }

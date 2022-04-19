@@ -1859,4 +1859,22 @@ public class Solution {
         System.out.println(Arrays.toString(ans));
         return ans;
     }
+
+    /**
+     * 191. 位1的个数
+     * https://leetcode-cn.com/problems/number-of-1-bits/
+     */
+    public int hammingWeight(int n) {
+        int ans = 0;
+        String s = Integer.toBinaryString(n);
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '1') {
+                ans++;
+            }
+        }
+
+        System.out.println("ans=" + ans);
+        return ans;
+    }
 }
