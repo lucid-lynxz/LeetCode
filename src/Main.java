@@ -1,3 +1,5 @@
+import util.LinkUtil;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -243,8 +245,14 @@ public class Main {
 //        solution.shortestToChar("aaab", 'b'); // [3,2,1,0]
 
         // 191. 位1的个数
-        solution.hammingWeight(0b00000000000000000000000000001011); // 3
-        solution.hammingWeight(0b00000000000000000000000010000000); // 1
-        solution.hammingWeight(0b11111111111111111111111111111101); // 31
+//        solution.hammingWeight(0b00000000000000000000000000001011); // 3
+//        solution.hammingWeight(0b00000000000000000000000010000000); // 1
+//        solution.hammingWeight(0b11111111111111111111111111111101); // 31
+
+        // 203. 移除链表元素
+        solution.removeElements(LinkUtil.makeListNode(1, 2, 6, 3, 4, 5, 6), 6); // [1,2,3,4,5]
+        solution.removeElements(LinkUtil.makeListNode(), 1); // []
+        solution.removeElements(LinkUtil.makeListNode(7, 7, 7, 7), 7); // []
+        solution.removeElements(LinkUtil.makeListNode(1, 2, 2, 1), 2); // [1,1]
     }
 }

@@ -1886,4 +1886,30 @@ public class Solution {
 //        System.out.println("ans=" + ans);
 //        return ans;
     }
+
+    /**
+     * 203. 移除链表元素
+     * https://leetcode-cn.com/problems/remove-linked-list-elements/
+     */
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode cur = head;
+        ListNode prev = null;
+        ListNode nHead = null;
+        while (cur != null) {
+            if (cur.val == val) {
+                if (prev != null) {
+                    prev.next = cur.next;
+                }
+            } else if (nHead == null) {
+                nHead = cur;
+                prev = cur;
+            } else {
+                prev = cur;
+            }
+            cur = cur.next;
+        }
+
+        System.out.println(nHead);
+        return nHead;
+    }
 }
