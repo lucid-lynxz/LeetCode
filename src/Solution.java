@@ -1912,4 +1912,61 @@ public class Solution {
         System.out.println(nHead);
         return nHead;
     }
+
+    /**
+     * 388. 文件的最长绝对路径
+     * https://leetcode-cn.com/problems/longest-absolute-file-path/
+     * <p>
+     * 输入：input = "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
+     * 输出：20
+     */
+    public int lengthLongestPath(String input) {
+        int n = input.length();
+        int pos = 0;
+        int ans = 0;
+        Stack<Integer> stack = new Stack<>();
+        int sum = 0;
+
+        while (pos < n) {
+            // 检测当前文件的深度
+            int depth = 1;
+            while (pos < n && input.charAt(pos) == '\t') {
+                pos++;
+                depth++;
+            }
+
+            // 统计当前文件名的长度
+            boolean isFile = false;
+            int len = 0;
+            while (pos < n && input.charAt(pos) != '\n') {
+                if (input.charAt(pos) == '.') {
+                    isFile = true;
+                }
+                len++;
+                pos++;
+            }
+            // 跳过当前的换行符
+            pos++;
+
+            // 弹出之前层级数据
+            while (stack.size() >= depth) {
+                sum -= stack.pop();
+            }
+
+            // 若非文件,则增加文件分隔符
+            if (!isFile) {
+                len++;
+            }
+
+            // 当前文件名长度入栈
+            stack.push(len);
+            sum += len; // 当前文件路径长度
+
+            if (isFile) { // 普通文件时, 计算最大深度
+                ans = Math.max(ans, sum);
+            }
+        }
+        System.out.println("ans=" + ans);
+        return ans;
+    }
 }

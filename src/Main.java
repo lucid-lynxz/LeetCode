@@ -1,5 +1,3 @@
-import util.LinkUtil;
-
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -250,9 +248,16 @@ public class Main {
 //        solution.hammingWeight(0b11111111111111111111111111111101); // 31
 
         // 203. 移除链表元素
-        solution.removeElements(LinkUtil.makeListNode(1, 2, 6, 3, 4, 5, 6), 6); // [1,2,3,4,5]
-        solution.removeElements(LinkUtil.makeListNode(), 1); // []
-        solution.removeElements(LinkUtil.makeListNode(7, 7, 7, 7), 7); // []
-        solution.removeElements(LinkUtil.makeListNode(1, 2, 2, 1), 2); // [1,1]
+//        solution.removeElements(LinkUtil.makeListNode(1, 2, 6, 3, 4, 5, 6), 6); // [1,2,3,4,5]
+//        solution.removeElements(LinkUtil.makeListNode(), 1); // []
+//        solution.removeElements(LinkUtil.makeListNode(7, 7, 7, 7), 7); // []
+//        solution.removeElements(LinkUtil.makeListNode(1, 2, 2, 1), 2); // [1,1]
+
+        // 388. 文件的最长绝对路径
+        solution.lengthLongestPath("dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"); // 20
+        solution.lengthLongestPath("a"); // 0
+        solution.lengthLongestPath("file1.txt\nfile2.txt\nlongfile.txt"); // 12
+        solution.lengthLongestPath("a.txt"); //5
+
     }
 }
