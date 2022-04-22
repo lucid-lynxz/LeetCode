@@ -1998,4 +1998,39 @@ public class Solution {
         System.out.println(sb);
         return sb.toString();
     }
+
+    /**
+     * 396. 旋转函数
+     * https://leetcode-cn.com/problems/rotate-function/
+     * <p>
+     * nums = [4,3,2,6]
+     * F(0) = (0 * 4) + (1 * 3) + (2 * 2) + (3 * 6) = 0 + 3 + 4 + 18 = 25
+     * F(1) = (0 * 6) + (1 * 4) + (2 * 3) + (3 * 2) = 0 + 4 + 6 + 6 = 16
+     * F(2) = (0 * 2) + (1 * 6) + (2 * 4) + (3 * 3) = 0 + 6 + 8 + 9 = 23
+     * <p>
+     * F(0) = 0*nums[0] + 1*nums[1] + 2*nums[2] + 3*nums[3]
+     * F(1) = 0*nums[3] + 1*nums[0] + 2*nums[1] + 3*nums[2]
+     * F(2) = 0*nums[2] + 1*nums[3] + 2*nums[0] + 3*nums[1]
+     * 即:
+     * F(0) = 0*nums[0] + 1*nums[1] + 2*nums[2] + 3*nums[3]
+     * F(1) = 1*nums[0] + 2*nums[1] + 3*nums[2] + 0*nums[3] = F(0) + sumNums - 4*nums[3] = F(0) + sumNums - len*nums[len-n]
+     * F(2) = 2*nums[0] + 3*nums[1] + 0*nums[2] + 1*nums[3] = F(1) + sumNums - 4*nums[2] = F(0) + sumNums - len*nums[len-n]
+     * 其中: sumNums 是所有数组元素求和  len表示数组元素个数
+     */
+    public int maxRotateFunction(int[] nums) {
+        int sumNums = Arrays.stream(nums).sum();
+        int len = nums.length;
+        int fn = 0;
+        for (int i = 0; i < len; i++) { // 求 F(0)
+            fn += i * nums[i];
+        }
+        int max = fn;
+        // 求F(1)...F(len-1)
+        for (int i = 1; i < len; i++) {
+            fn += sumNums - len * nums[len - i];
+            max = Math.max(max, fn);
+        }
+        System.out.println(max);
+        return max;
+    }
 }
