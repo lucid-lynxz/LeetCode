@@ -254,10 +254,14 @@ public class Main {
 //        solution.removeElements(LinkUtil.makeListNode(1, 2, 2, 1), 2); // [1,1]
 
         // 388. 文件的最长绝对路径
-        solution.lengthLongestPath("dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"); // 20
-        solution.lengthLongestPath("a"); // 0
-        solution.lengthLongestPath("file1.txt\nfile2.txt\nlongfile.txt"); // 12
-        solution.lengthLongestPath("a.txt"); //5
+//        solution.lengthLongestPath("dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"); // 20
+//        solution.lengthLongestPath("a"); // 0
+//        solution.lengthLongestPath("file1.txt\nfile2.txt\nlongfile.txt"); // 12
+//        solution.lengthLongestPath("a.txt"); //5
+
+        //824. 山羊拉丁文
+        solution.toGoatLatin("I speak Goat Latin"); // Imaa peaksmaaa oatGmaaaa atinLmaaaaa
+        solution.toGoatLatin("The quick brown fox jumped over the lazy dog"); // heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa
 
     }
 }

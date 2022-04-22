@@ -1969,4 +1969,55 @@ public class Solution {
         System.out.println("ans=" + ans);
         return ans;
     }
+
+    /**
+     * 824. 山羊拉丁文
+     * https://leetcode-cn.com/problems/goat-latin/
+     */
+    public String toGoatLatin(String sentence) {
+        String flag = "ma";
+        StringBuilder sb = new StringBuilder(sentence.length());
+        String[] words = sentence.split(" ");
+        int size = words.length;
+        for (int i = 0; i < size; i++) {
+            String word = words[i];
+            char c = word.charAt(0);
+            boolean isYuan = isYuan(c);
+
+            if (isYuan) {
+                sb.append(word);
+            } else {
+                sb.append(word.replaceFirst(Character.toString(c), "")).append(c);
+            }
+            sb.append(flag);
+
+            for (int j = 0; j <= i; j++) {
+                sb.append("a");
+            }
+            if (i != size - 1) {
+                sb.append(" ");
+            }
+        }
+        System.out.println(sb);
+        return sb.toString();
+    }
+
+    private Set<Character> yuanSet;
+
+    private boolean isYuan(char c) {
+        if (yuanSet == null) {
+            yuanSet = new HashSet<>();
+            yuanSet.add('a');
+            yuanSet.add('e');
+            yuanSet.add('i');
+            yuanSet.add('o');
+            yuanSet.add('u');
+            yuanSet.add('A');
+            yuanSet.add('E');
+            yuanSet.add('I');
+            yuanSet.add('O');
+            yuanSet.add('U');
+        }
+        return yuanSet.contains(c);
+    }
 }
