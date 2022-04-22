@@ -262,6 +262,7 @@ public class Main {
         //824. 山羊拉丁文
         solution.toGoatLatin("I speak Goat Latin"); // Imaa peaksmaaa oatGmaaaa atinLmaaaaa
         solution.toGoatLatin("The quick brown fox jumped over the lazy dog"); // heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa
-
+        solution.toGoatLatin("HZ sg L"); // ZHmaa gsmaaa Lmaaaa
+        solution.toGoatLatin("Each word consists of lowercase and uppercase letters only"); // Eachmaa ordwmaaa onsistscmaaaa ofmaaaaa owercaselmaaaaaa andmaaaaaaa uppercasemaaaaaaaa etterslmaaaaaaaaa onlymaaaaaaaaaa
     }
 }
