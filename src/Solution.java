@@ -2055,4 +2055,35 @@ public class Solution {
         System.out.println(ans);
         return ans;
     }
+
+    /**
+     * 11. 盛最多水的容器
+     * https://leetcode-cn.com/problems/container-with-most-water/
+     * 示例:
+     * height = 1, 8, 6, 2, 5, 4, 8, 3, 7
+     * index  = 0, 1, 2, 3, 4, 5, 6, 7, 8
+     * <p>
+     * 双指针解法, 假设初始水槽 (i,j), i=0,j=8, 则
+     * 向内移动短板, 水槽容积可能会变大
+     * 向内移动长板, 水槽容积肯定变小
+     * 因此, 循环向内移动短板并比较容积最大值即可
+     * <p>
+     * 既然有向内移动短板的操作,应该也可以向外移动短板的操作,但初始容器无法确定
+     * 需要找到最小容器位置再向外扩展
+     */
+    public int maxArea2(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int ans = 0;
+        while (left < right) {
+            ans = Math.max(ans, Math.min(height[left], height[right]) * (right - left));
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        System.out.println(ans);
+        return ans;
+    }
 }

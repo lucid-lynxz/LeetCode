@@ -271,7 +271,7 @@ public class Main {
 //        solution.maxRotateFunction(new int[]{-8, -5}); // -5
 
         // 11. 盛最多水的容器
-        solution.maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}); // 49
-        solution.maxArea(new int[]{1, 1}); // 1
+        solution.maxArea2(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}); // 49
+        solution.maxArea2(new int[]{1, 1}); // 1
     }
 }
