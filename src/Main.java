@@ -266,8 +266,12 @@ public class Main {
 //        solution.toGoatLatin("Each word consists of lowercase and uppercase letters only"); // Eachmaa ordwmaaa onsistscmaaaa ofmaaaaa owercaselmaaaaaa andmaaaaaaa uppercasemaaaaaaaa etterslmaaaaaaaaa onlymaaaaaaaaaa
 
         // 396. 旋转函数
-        solution.maxRotateFunction(new int[]{4, 3, 2, 6}); // 26
-        solution.maxRotateFunction(new int[]{100}); // 0
-        solution.maxRotateFunction(new int[]{-8, -5}); // -5
+//        solution.maxRotateFunction(new int[]{4, 3, 2, 6}); // 26
+//        solution.maxRotateFunction(new int[]{100}); // 0
+//        solution.maxRotateFunction(new int[]{-8, -5}); // -5
+
+        // 11. 盛最多水的容器
+        solution.maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}); // 49
+        solution.maxArea(new int[]{1, 1}); // 1
     }
 }

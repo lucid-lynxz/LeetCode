@@ -2033,4 +2033,26 @@ public class Solution {
         System.out.println(max);
         return max;
     }
+
+    /**
+     * 11. 盛最多水的容器
+     * https://leetcode-cn.com/problems/container-with-most-water/
+     * 暴力解法
+     * 双循环计算所有可能的容器宽高, 但数据量大的时候会运行超时, 如: 11.txt
+     */
+    public int maxArea(int[] height) {
+        int ans = 0;
+        int n = height.length;
+        for (int i = 0; i < n - 1; i++) {
+            int h1 = height[i];
+            for (int j = i + 1; j < n; j++) {
+                int h2 = height[j];
+                int h = Math.min(h1, h2);
+                int w = j - i;
+                ans = Math.max(ans, w * h);
+            }
+        }
+        System.out.println(ans);
+        return ans;
+    }
 }
