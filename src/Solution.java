@@ -2086,4 +2086,99 @@ public class Solution {
         System.out.println(ans);
         return ans;
     }
+
+    /**
+     * 15. 三数之和
+     * https://leetcode-cn.com/problems/3sum/
+     * 暴力解法: 三循环
+     * 由于要求答案不重复, 因此先对数组排序, 然后使用 set 数据结构进行去重
+     * 这样对 15.txt 3000个元素,我macOS i7-4870HQ 16G内存 耗时14924ms
+     */
+    public List<List<Integer>> threeSum(int[] nums) {
+        long start = System.currentTimeMillis();
+        Arrays.sort(nums);// 先对原数组进行升序排序
+        Set<List<Integer>> set = new HashSet<>();//数据结构使用 hashSet
+
+        // 三轮循环
+        int n = nums.length;
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 1; j < n - 1; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    // 数组已排序, 若前两个元素和大于0,则再加一个后续元素肯定最终大于0
+                    // 增加本优化判断后 耗时减少到 7538ms
+                    if (nums[i] + nums[j] > 0) {
+                        break;
+                    }
+
+                    if (nums[i] + nums[j] + nums[k] == 0) {
+                        List<Integer> element = new ArrayList<>();
+                        element.add(nums[i]);
+                        element.add(nums[j]);
+                        element.add(nums[k]);
+                        set.add(element);
+                    }
+                }
+            }
+        }
+
+        System.out.println("耗时01: " + (System.currentTimeMillis() - start) + "ms, size=" + set.size());
+        return new ArrayList<>(set);
+    }
+
+    /**
+     * 15. 三数之和
+     * https://leetcode-cn.com/problems/3sum/
+     * 排序 + 双指针
+     * 确定了第一个元素后, 剩下的两个元素就可以使用双指针
+     * 由于数组已排序,因此 L = i + 1,  R = n -1
+     * 若 nums[i] + nums[L] + nums[R] > 0 ,则右指针往左移动,反之左指针向右移动
+     * 相比于三重排序的暴力解法, 该方法耗时38ms
+     */
+    public List<List<Integer>> threeSum02(int[] nums) {
+        long start = System.currentTimeMillis();
+        Arrays.sort(nums);// 先对原数组进行升序排序
+        Set<List<Integer>> set = new HashSet<>();
+        int n = nums.length;
+        for (int i = 0; i < n - 2; i++) {
+            int l = i + 1;
+            int r = n - 1;
+
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum > 0) { // 和大于0时, 由于数组已排序,则右指针往左移动, 和才会减小
+                    r--;
+                } else if (sum < 0) { // 和小于0, 由于数组已排序, 需要左指针往右移动, 和才会增大,才有可能变成0
+                    l++;
+                } else {
+                    List<Integer> element = new ArrayList<>();
+                    element.add(nums[i]);
+                    element.add(nums[l]);
+                    element.add(nums[r]);
+                    set.add(element);
+
+
+                    // 继续寻找下一组答案, 双指针继续向内移动
+                    l++;
+                    r--;
+
+                    // 由于需要去重, 因此若左指针移动前后的两个元素若相同,则继续移动, 右指针同理
+                    while (l < r && nums[l] == nums[l - 1]) {
+                        l++;
+                    }
+
+                    while (l < r && nums[r] == nums[r + 1]) {
+                        r--;
+                    }
+                }
+            }
+        }
+
+        if (set.size() < 10) {
+            System.out.println("耗时02: " + (System.currentTimeMillis() - start) + "ms, size=" + set.size() + ",ans*" + set);
+        } else {
+            System.out.println("耗时02: " + (System.currentTimeMillis() - start) + "ms, size=" + set.size());
+
+        }
+        return new ArrayList<>(set);
+    }
 }

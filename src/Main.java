@@ -1,3 +1,5 @@
+import util.ArrayUtil;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -271,7 +273,16 @@ public class Main {
 //        solution.maxRotateFunction(new int[]{-8, -5}); // -5
 
         // 11. 盛最多水的容器
-        solution.maxArea2(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}); // 49
-        solution.maxArea2(new int[]{1, 1}); // 1
+//        solution.maxArea2(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}); // 49
+//        solution.maxArea2(new int[]{1, 1}); // 1
+
+        //15. 三数之和
+        solution.threeSum02(new int[]{-1, 0, 1, 2, -1, -4}); // [[-1,-1,2],[-1,0,1]]
+        solution.threeSum02(new int[]{}); // []
+        solution.threeSum02(new int[]{0}); // []
+        solution.threeSum02(new int[]{0, 0, 0}); // [0,0,0]
+        int[] nums = ArrayUtil.INSTANCE.readByFile("assets/large_arr_case/15.txt");
+        solution.threeSum(nums);
+        solution.threeSum02(nums);
     }
 }
