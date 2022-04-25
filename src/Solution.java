@@ -2181,4 +2181,26 @@ public class Solution {
         }
         return new ArrayList<>(set);
     }
+
+    /**
+     * 868. 二进制间距
+     * https://leetcode-cn.com/problems/binary-gap/
+     */
+    public int binaryGap(int n) {
+        int pos = 0;
+        int dis = 0; // 最大间距值
+        int lastOneIndex = -1; // 上一个1的位置
+        while (pos < Integer.SIZE) {
+            if ((n & (1 << pos)) > 0) { // 按位与, 找到一个1
+                if (lastOneIndex >= 0) { // 已存在1, 则求距离
+                    dis = Math.max(dis, pos - lastOneIndex);
+                }
+                lastOneIndex = pos;
+            }
+            pos++;
+        }
+
+        System.out.println("dis=" + dis);
+        return dis;
+    }
 }
