@@ -2203,4 +2203,30 @@ public class Solution {
         System.out.println("dis=" + dis);
         return dis;
     }
+
+    /**
+     * 1732. 找到最高海拔
+     * https://leetcode-cn.com/problems/find-the-highest-altitude/
+     * 给你一个长度为 n 的整数数组 gain ，其中 gain[i] 是点 i 和点 i + 1 的 净海拔高度差（0 <= i < n）。请你返回 最高点的海拔
+     * gain[i] = h[i+1] - h[i]
+     * h[0] = 0
+     * h[1] = h[0] + gain[0] = gain[0]
+     * h[2] = gain[1] + h[1] = gain[0] + gain[1]
+     * ....
+     * h[i] = gain[0] + gain[1] + ... gain[i-1]
+     * <p>
+     * 点     0    1    2   3   4   5   6
+     * gain       -5    1   5   0   7
+     * 海拔   0    -5   -4   1
+     */
+    public int largestAltitude(int[] gain) {
+        int maxH = 0;
+        int h = 0;
+        for (int j : gain) {
+            h += j; // 求当前位置的海拔
+            maxH = Math.max(h, maxH); // 计算最高海拔
+        }
+        System.out.println(maxH);
+        return maxH;
+    }
 }

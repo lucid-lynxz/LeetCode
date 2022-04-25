@@ -284,8 +284,12 @@ public class Main {
 //        solution.threeSum02(nums);
 
         // 868. 二进制间距
-        solution.binaryGap(22); // 2
-        solution.binaryGap(8); // 0
-        solution.binaryGap(5); // 2
+//        solution.binaryGap(22); // 2
+//        solution.binaryGap(8); // 0
+//        solution.binaryGap(5); // 2
+
+        // 1732. 找到最高海拔
+        solution.largestAltitude(new int[]{-5, 1, 5, 0, -7}); // 1
+        solution.largestAltitude(new int[]{-4, -3, -2, -1, 4, 3, 2}); //  0
     }
 }
