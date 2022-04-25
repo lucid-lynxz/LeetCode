@@ -289,7 +289,14 @@ public class Main {
 //        solution.binaryGap(5); // 2
 
         // 1732. 找到最高海拔
-        solution.largestAltitude(new int[]{-5, 1, 5, 0, -7}); // 1
-        solution.largestAltitude(new int[]{-4, -3, -2, -1, 4, 3, 2}); //  0
+//        solution.largestAltitude(new int[]{-5, 1, 5, 0, -7}); // 1
+//        solution.largestAltitude(new int[]{-4, -3, -2, -1, 4, 3, 2}); //  0
+
+        // 1404. 将二进制表示减到 1 的步骤数
+//        solution.numSteps("1101"); // 6
+//        solution.numSteps("10"); // 1
+//        solution.numSteps("1"); // 0
+//        solution.numSteps("1111011110000011100000110001011011110010111001010111110001"); // 85
+        solution.numSteps("100100001010010101101000111100100111101111000111111010010001100001000100011001"); // 120
     }
 }

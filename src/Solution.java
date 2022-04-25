@@ -2229,4 +2229,66 @@ public class Solution {
         System.out.println(maxH);
         return maxH;
     }
+
+    /**
+     * 1404. 将二进制表示减到 1 的步骤数 中等
+     * https://leetcode-cn.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/
+     * 给你一个以二进制形式表示的数字 s 。请你返回按下述规则将其减少到 1 所需要的步骤数：
+     * 如果当前数字为偶数，则将其除以 2
+     * 如果当前数字为奇数，则将其加上 1
+     * 题目保证你总是可以按上述规则将测试用例变为 1
+     * <p>
+     * 难怪会是中等, 需要考虑越界情况,如:  "1111011110000011100000110001011011110010111001010111110001"
+     * 因此不能用Integer.parseInt(s, 2) 求得整数
+     */
+    public int numSteps(String s) {
+        int steps = 0;
+        while (!Objects.equals(s, "1")) {
+            int len = s.length();
+            if (len < Integer.SIZE) { // 字符串长度可以用整数表示时, 直接转换为整数求解
+                break;
+            }
+            if (s.charAt(len - 1) == '1') { // 奇数加1
+                int pos = len - 1;
+                int carry = 1; // 首次计算时, 表示题目要求的加1, 后续计算则表示进位
+                char[] arr = new char[len + 1];
+                while (pos >= 0) {
+                    char c = s.charAt(pos);
+                    int cI = c == '0' ? 0 : 1;
+                    int sum = cI + carry;
+                    carry = sum / 2;
+                    arr[pos + 1] = sum % 2 == 1 ? '1' : '0';
+                    pos--;
+                }
+                arr[0] = carry == 1 ? '1' : '0';
+
+                // 去除前导0
+                int index = 0;
+                for (int i = 0; i < len + 1; i++) {
+                    if (arr[i] != '0') {
+                        index = i;
+                        break;
+                    }
+                }
+                arr = Arrays.copyOfRange(arr, index, len + 1);
+                s = String.valueOf(arr); // 获取结果字符串
+            } else { // 偶数除以2, 等于向右移位, 等效于截取字符串前n位
+                s = s.substring(0, s.length() - 1);
+            }
+            steps++;
+        }
+
+        // 整数求解
+        int n = Integer.parseInt(s, 2);
+        while (n != 1) {
+            if (n % 2 == 1) { // 奇数
+                n++;
+            } else {
+                n = n / 2;
+            }
+            steps++;
+        }
+        System.out.println(steps);
+        return steps;
+    }
 }
