@@ -297,6 +297,12 @@ public class Main {
 //        solution.numSteps("10"); // 1
 //        solution.numSteps("1"); // 0
 //        solution.numSteps("1111011110000011100000110001011011110010111001010111110001"); // 85
-        solution.numSteps("100100001010010101101000111100100111101111000111111010010001100001000100011001"); // 120
+//        solution.numSteps("100100001010010101101000111100100111101111000111111010010001100001000100011001"); // 120
+
+        // 剑指 Offer II 015. 字符串中的所有变位词
+        solution.findAnagrams("cbaebabacd", "abc"); // [0,6]
+        solution.findAnagrams("abab", "ab"); // [0,1,2]
+        solution.findAnagrams("abaacbabc", "abc"); // [3,4,6]
+        solution.findAnagrams("baa", "aa"); // [1]
     }
 }

@@ -2291,4 +2291,84 @@ public class Solution {
         System.out.println(steps);
         return steps;
     }
+
+    /**
+     * 剑指 Offer II 015. 字符串中的所有变位词
+     * https://leetcode-cn.com/problems/VabMRr/
+     */
+    public List<Integer> findAnagrams(String s, String p) {
+        int ns = s.length();
+        int np = p.length();
+        List<Integer> ans = new ArrayList<>();
+        if (ns < np) {
+            return ans;
+        }
+
+        Map<Character, Integer> pMap = new HashMap<>();
+        for (int i = 0; i < np; i++) {
+            char c = p.charAt(i);
+            updateMap(pMap, c, true);
+        }
+
+        Map<Character, Integer> sMap = new HashMap<>();
+        int sMapSum = 0;
+        int l = 0, r = 0;
+        while (l <= r && r < ns) {
+            char c = s.charAt(r);
+            if (pMap.containsKey(c)) { // 若当前位符合预期,则将其加入待定列表
+                int sCount = updateMap(sMap, c, true);
+                sMapSum++;
+                int pCount = pMap.get(c);
+                if (pCount < sCount) { // 若当前字符个数已超预期树,则左指针右移直到数量相等
+                    for (int i = l; i < r; i++) {
+                        char c1 = s.charAt(l);
+                        updateMap(sMap, c1, false);
+                        sMapSum--;
+                        l = i + 1;
+                        if (c1 == c) {
+                            break;
+                        }
+                    }
+                }
+            } else { // 若检索到非预期字符,则清空sMap,总字符数清零,从下一位开始从头计算
+                sMap.clear();
+                sMapSum = 0;
+                l = r + 1;
+            }
+            r++;
+
+            // 字符总个数达到预期
+            if (sMapSum == np) {
+                // 比较是否是变位词, 若是,则将起始位置l加入答案
+                if (pMap.equals(sMap)) {
+                    ans.add(l);
+                }
+
+                // 左指针右移移位,开始下一轮子串的判断
+                updateMap(sMap, s.charAt(l), false);
+                sMapSum--;
+                l++;
+            }
+        }
+
+        System.out.println(ans);
+        return ans;
+    }
+
+    /**
+     * 更新map指定key的value
+     *
+     * @param increase true-value值加1 false-value值减1, 减到0时,将key从map中移除
+     * @return 指定key的value值
+     */
+    private int updateMap(Map<Character, Integer> map, Character c, boolean increase) {
+        int count = map.getOrDefault(c, 0);
+        count = increase ? count + 1 : count - 1;
+        if (count <= 0) {
+            map.remove(c);
+        } else {
+            map.put(c, count);
+        }
+        return Math.max(0, count);
+    }
 }
