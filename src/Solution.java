@@ -2371,4 +2371,31 @@ public class Solution {
         }
         return Math.max(0, count);
     }
+
+    /**
+     * 1305. 两棵二叉搜索树中的所有元素
+     * https://leetcode-cn.com/problems/all-elements-in-two-binary-search-trees/
+     */
+    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+        List<Integer> list1 = inorderTraversal2(root1);
+        List<Integer> list2 = inorderTraversal2(root2);
+        List<Integer> ans = new ArrayList<>();
+        int l = 0, r = 0;
+        int n1 = list1.size();
+        int n2 = list2.size();
+        while (l < n1 || r < n2) {
+            Integer item1 = l < n1 ? list1.get(l) : Integer.MAX_VALUE;
+            Integer item2 = r < n2 ? list2.get(r) : Integer.MAX_VALUE;
+
+            if (item1 <= item2) {
+                ans.add(item1);
+                l++;
+            } else {
+                ans.add(item2);
+                r++;
+            }
+        }
+        System.out.println(ans);
+        return ans;
+    }
 }

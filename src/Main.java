@@ -1,3 +1,5 @@
+import util.TreeNodeUtil;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -300,9 +302,14 @@ public class Main {
 //        solution.numSteps("100100001010010101101000111100100111101111000111111010010001100001000100011001"); // 120
 
         // 剑指 Offer II 015. 字符串中的所有变位词
-        solution.findAnagrams("cbaebabacd", "abc"); // [0,6]
-        solution.findAnagrams("abab", "ab"); // [0,1,2]
-        solution.findAnagrams("abaacbabc", "abc"); // [3,4,6]
-        solution.findAnagrams("baa", "aa"); // [1]
+//        solution.findAnagrams("cbaebabacd", "abc"); // [0,6]
+//        solution.findAnagrams("abab", "ab"); // [0,1,2]
+//        solution.findAnagrams("abaacbabc", "abc"); // [3,4,6]
+//        solution.findAnagrams("baa", "aa"); // [1]
+
+        // 1305. 两棵二叉搜索树中的所有元素
+        solution.getAllElements(TreeNodeUtil.arrayToTreeNode(new Integer[]{2, 1, 4}), TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 0, 3})); // 0,1,1,2,3,4
+        solution.getAllElements(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, null, 8}), TreeNodeUtil.arrayToTreeNode(new Integer[]{8, 1})); // 1,1,8,8
+
     }
 }
