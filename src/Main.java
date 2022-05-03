@@ -1,5 +1,3 @@
-import util.TreeNodeUtil;
-
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -308,8 +306,15 @@ public class Main {
 //        solution.findAnagrams("baa", "aa"); // [1]
 
         // 1305. 两棵二叉搜索树中的所有元素
-        solution.getAllElements(TreeNodeUtil.arrayToTreeNode(new Integer[]{2, 1, 4}), TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 0, 3})); // 0,1,1,2,3,4
-        solution.getAllElements(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, null, 8}), TreeNodeUtil.arrayToTreeNode(new Integer[]{8, 1})); // 1,1,8,8
+//        solution.getAllElements(TreeNodeUtil.arrayToTreeNode(new Integer[]{2, 1, 4}), TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 0, 3})); // 0,1,1,2,3,4
+//        solution.getAllElements(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, null, 8}), TreeNodeUtil.arrayToTreeNode(new Integer[]{8, 1})); // 1,1,8,8
+
+        // 1647. 字符频次唯一的最小删除次数
+        solution.minDeletions("aab"); // 0
+        solution.minDeletions("aaabbbcc"); // 2
+        solution.minDeletions("ceabaacb"); // 2
+        solution.minDeletions("a"); // 0
+
 
     }
 }

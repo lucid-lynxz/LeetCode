@@ -2398,4 +2398,36 @@ public class Solution {
         System.out.println(ans);
         return ans;
     }
+
+    /**
+     * 1647. 字符频次唯一的最小删除次数
+     * https://leetcode-cn.com/problems/minimum-deletions-to-make-character-frequencies-unique/
+     */
+    public int minDeletions(String s) {
+        // 遍历统计所有字符的频次, 字符串只包含小写字母,共计26个
+        int n = s.length();
+        int[] freq = new int[26];
+        for (int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+            int index = c - 'a';
+            freq[index] = freq[index] + 1;
+        }
+
+        // 若某频次已出现,则删除一个字符,该字符频次减1,重新比价频次
+        int ans = 0; // 要删减的此树
+        Set<Integer> freqSet = new HashSet<>(); // 使用set存储已出现过的频次
+        for (int i = 0; i < 26; i++) {
+            int cnt = freq[i];
+            while (freqSet.contains(cnt) && cnt > 0) {
+                cnt--;
+                ans++;
+            }
+
+            if (cnt > 0) {
+                freqSet.add(cnt);
+            }
+        }
+        System.out.println("ans=" + ans);
+        return ans;
+    }
 }
