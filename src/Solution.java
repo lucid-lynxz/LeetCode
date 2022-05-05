@@ -2430,4 +2430,37 @@ public class Solution {
         System.out.println("ans=" + ans);
         return ans;
     }
+
+    /**
+     * 128. 最长连续序列
+     * https://leetcode-cn.com/problems/longest-consecutive-sequence/
+     * 排序+双指针
+     */
+    public int longestConsecutive(int[] nums) {
+        int n = nums == null ? 0 : nums.length;
+        if (n <= 1) {
+            return n;
+        }
+
+        // 排序后进行递增判断
+        Arrays.sort(nums);
+        int l = 0;
+        int r = 1;
+        int max = 1; // 至少有一个元素, 因此默认最长连续序列长度设置为1
+        int skip = 0;
+
+        while (l <= r && r < n) {
+            if (nums[r] == nums[r - 1] + 1) { // 元素递增, 则计算最长子串
+                max = Math.max(max, r - l + 1 - skip);
+            } else if (nums[r] == nums[r - 1]) { // 元素与前一个元素相同, 则跳过数+1
+                skip++;
+            } else { // 非递增元素,则左指针右移
+                l = r;
+                skip = 0;
+            }
+            r++;
+        }
+        return max;
+    }
+
 }

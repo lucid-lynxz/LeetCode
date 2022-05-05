@@ -310,10 +310,17 @@ public class Main {
 //        solution.getAllElements(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, null, 8}), TreeNodeUtil.arrayToTreeNode(new Integer[]{8, 1})); // 1,1,8,8
 
         // 1647. 字符频次唯一的最小删除次数
-        solution.minDeletions("aab"); // 0
-        solution.minDeletions("aaabbbcc"); // 2
-        solution.minDeletions("ceabaacb"); // 2
-        solution.minDeletions("a"); // 0
+//        solution.minDeletions("aab"); // 0
+//        solution.minDeletions("aaabbbcc"); // 2
+//        solution.minDeletions("ceabaacb"); // 2
+//        solution.minDeletions("a"); // 0
+
+
+        // 128. 最长连续序列
+        System.out.println(solution.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2})); // 4
+        System.out.println(solution.longestConsecutive(new int[]{0, 3, 7, 2, 5, 8, 4, 6, 0, 1})); // 9
+        System.out.println(solution.longestConsecutive(new int[]{0, 0})); // 1
+        System.out.println(solution.longestConsecutive(new int[]{1, 2, 0, 1})); // 3
 
 
     }
