@@ -2463,4 +2463,36 @@ public class Solution {
         return max;
     }
 
+
+    /**
+     * 128. 最长连续序列
+     * https://leetcode-cn.com/problems/longest-consecutive-sequence/
+     * 哈希表法
+     */
+    public int longestConsecutive_hash(int[] nums) {
+        int n = nums == null ? 0 : nums.length;
+        if (n <= 1) {
+            return n;
+        }
+
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            set.add(nums[i]);
+        }
+
+        int max = 1;
+        for (int next : set) {
+            int cnt = 1;
+            if (set.contains(next - 1)) { // 前驱在set中,跳过
+                continue;
+            }
+
+            while (set.contains(++next)) {
+                cnt++;
+                max = Math.max(max, cnt);
+            }
+        }
+        return max;
+    }
+
 }

@@ -322,6 +322,11 @@ public class Main {
         System.out.println(solution.longestConsecutive(new int[]{0, 0})); // 1
         System.out.println(solution.longestConsecutive(new int[]{1, 2, 0, 1})); // 3
 
+        System.out.println(solution.longestConsecutive_hash(new int[]{100, 4, 200, 1, 3, 2})); // 4
+        System.out.println(solution.longestConsecutive_hash(new int[]{0, 3, 7, 2, 5, 8, 4, 6, 0, 1})); // 9
+        System.out.println(solution.longestConsecutive_hash(new int[]{0, 0})); // 1
+        System.out.println(solution.longestConsecutive_hash(new int[]{1, 2, 0, 1})); // 3
+
 
     }
 }
