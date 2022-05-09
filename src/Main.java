@@ -1,3 +1,6 @@
+import bean.TreeNode;
+import util.TreeNodeUtil;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -317,16 +320,18 @@ public class Main {
 
 
         // 128. 最长连续序列
-        System.out.println(solution.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2})); // 4
-        System.out.println(solution.longestConsecutive(new int[]{0, 3, 7, 2, 5, 8, 4, 6, 0, 1})); // 9
-        System.out.println(solution.longestConsecutive(new int[]{0, 0})); // 1
-        System.out.println(solution.longestConsecutive(new int[]{1, 2, 0, 1})); // 3
+//        System.out.println(solution.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2})); // 4
+//        System.out.println(solution.longestConsecutive(new int[]{0, 3, 7, 2, 5, 8, 4, 6, 0, 1})); // 9
+//        System.out.println(solution.longestConsecutive(new int[]{0, 0})); // 1
+//        System.out.println(solution.longestConsecutive(new int[]{1, 2, 0, 1})); // 3
+//
+//        System.out.println(solution.longestConsecutive_hash(new int[]{100, 4, 200, 1, 3, 2})); // 4
+//        System.out.println(solution.longestConsecutive_hash(new int[]{0, 3, 7, 2, 5, 8, 4, 6, 0, 1})); // 9
+//        System.out.println(solution.longestConsecutive_hash(new int[]{0, 0})); // 1
+//        System.out.println(solution.longestConsecutive_hash(new int[]{1, 2, 0, 1})); // 3
 
-        System.out.println(solution.longestConsecutive_hash(new int[]{100, 4, 200, 1, 3, 2})); // 4
-        System.out.println(solution.longestConsecutive_hash(new int[]{0, 3, 7, 2, 5, 8, 4, 6, 0, 1})); // 9
-        System.out.println(solution.longestConsecutive_hash(new int[]{0, 0})); // 1
-        System.out.println(solution.longestConsecutive_hash(new int[]{1, 2, 0, 1})); // 3
-
-
+        // 538. 把二叉搜索树转换为累加树
+        TreeNode node = solution.convertBST(TreeNodeUtil.arrayToTreeNode(new Integer[]{4, 1, 6, 0, 2, 5, 7, null, null, null, 3, null, null, null, 8}));
+        System.out.println(solution.levelOrder(node)); // [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
     }
 }

@@ -2495,4 +2495,19 @@ public class Solution {
         return max;
     }
 
+    private int convertBSTSum = 0;
+
+    /**
+     * 538. 把二叉搜索树转换为累加树
+     * https://leetcode.cn/problems/convert-bst-to-greater-tree/
+     */
+    public TreeNode convertBST(TreeNode root) {
+        if (root != null) {
+            convertBST(root.right);
+            convertBSTSum += root.val;
+            root.val = convertBSTSum;
+            convertBST(root.left);
+        }
+        return root;
+    }
 }
