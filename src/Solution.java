@@ -2510,4 +2510,32 @@ public class Solution {
         }
         return root;
     }
+
+    /**
+     * 剑指 Offer II 027. 回文链表
+     * https://leetcode.cn/problems/aMhZSa/
+     */
+    public boolean isPalindrome(ListNode head) {
+        // 转换为 List
+        List<Integer> list = new ArrayList<>();
+        while (head != null) {
+            list.add(head.val);
+            head = head.next;
+        }
+
+        int size = list.size();
+        if (size == 0) {
+            return true;
+        }
+
+        // 首位逐个比较, 不相等则不是回文数
+        for (int i = 0; i < size / 2; i++) {
+            Integer left = list.get(i);
+            Integer right = list.get(size - 1 - i);
+            if (!Objects.equals(left, right)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -1,5 +1,4 @@
-import bean.TreeNode;
-import util.TreeNodeUtil;
+import util.LinkUtil;
 
 public class Main {
     public static void main(String[] args) {
@@ -331,7 +330,13 @@ public class Main {
 //        System.out.println(solution.longestConsecutive_hash(new int[]{1, 2, 0, 1})); // 3
 
         // 538. 把二叉搜索树转换为累加树
-        TreeNode node = solution.convertBST(TreeNodeUtil.arrayToTreeNode(new Integer[]{4, 1, 6, 0, 2, 5, 7, null, null, null, 3, null, null, null, 8}));
-        System.out.println(solution.levelOrder(node)); // [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
+//        TreeNode node = solution.convertBST(TreeNodeUtil.arrayToTreeNode(new Integer[]{4, 1, 6, 0, 2, 5, 7, null, null, null, 3, null, null, null, 8}));
+//        System.out.println(solution.levelOrder(node)); // [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
+
+        // 剑指 Offer II 027. 回文链表
+        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2, 3, 3, 2, 1))); // true
+        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2))); // false
+        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2, 1))); // true
+        System.out.println(solution.isPalindrome(LinkUtil.makeListNode())); // true
     }
 }
