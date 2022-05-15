@@ -1,5 +1,6 @@
 import bean.ListNode;
 import bean.TreeNode;
+import util.LinkUtil;
 
 import java.util.*;
 
@@ -2537,5 +2538,15 @@ public class Solution {
             }
         }
         return true;
+    }
+
+    /**
+     * 面试题 02.02. 返回倒数第 k 个节点
+     * https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/
+     */
+    public int kthToLast(ListNode head, int k) {
+        List<Integer> list = LinkUtil.convert2List(head);
+        int size = list.size();
+        return list.get(size - k);
     }
 }

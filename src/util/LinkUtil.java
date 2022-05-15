@@ -2,6 +2,9 @@ package util;
 
 import bean.ListNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 链表工具类
  */
@@ -26,6 +29,37 @@ public class LinkUtil {
         }
         return head;
     }
+
+    /**
+     * 单链表转list
+     */
+    public static List<Integer> convert2List(ListNode head) {
+        List<Integer> res = new ArrayList<>();
+        while (head != null) {
+            res.add(head.val);
+            head = head.next;
+        }
+
+        return res;
+    }
+
+    /**
+     * 反转原链表
+     */
+    public static ListNode reverse(ListNode head) {
+        ListNode pre = null;
+        ListNode cur = head;
+
+        while (cur != null) {
+            ListNode next = cur.next;
+            pre = cur;
+            cur.next = pre;
+            cur = next;
+        }
+        return head;
+    }
+
+
 //
 //    /**
 //     * 将数组转为二叉树, 如: 1,null,2,3 表示root.val=1, root.left=nul, root.right.val=2

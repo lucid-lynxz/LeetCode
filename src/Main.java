@@ -334,9 +334,12 @@ public class Main {
 //        System.out.println(solution.levelOrder(node)); // [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
 
         // 剑指 Offer II 027. 回文链表
-        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2, 3, 3, 2, 1))); // true
-        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2))); // false
-        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2, 1))); // true
-        System.out.println(solution.isPalindrome(LinkUtil.makeListNode())); // true
+//        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2, 3, 3, 2, 1))); // true
+//        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2))); // false
+//        System.out.println(solution.isPalindrome(LinkUtil.makeListNode(1, 2, 1))); // true
+//        System.out.println(solution.isPalindrome(LinkUtil.makeListNode())); // true
+
+        // 面试题 02.02. 返回倒数第 k 个节点
+        System.out.println(solution.kthToLast(LinkUtil.makeListNode(1, 2, 3, 4, 5), 2)); // 4
     }
 }
