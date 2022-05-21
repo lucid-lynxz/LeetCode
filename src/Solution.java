@@ -2572,4 +2572,46 @@ public class Solution {
         }
         return ans;
     }
+
+    /**
+     * 436. 寻找右区间
+     * https://leetcode.cn/problems/find-right-interval/
+     * 双重遍历
+     * 寻找右区间, 就是遍历区间终点和起点, 找到比终点大的最小起点值,该起点所在区间就是其右区间
+     */
+    public int[] findRightInterval(int[][] intervals) {
+        int n = intervals.length;
+        int[] sArr = new int[n];
+        int[] eArr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            int[] item = intervals[i];
+            sArr[i] = item[0];
+            eArr[i] = item[1];
+        }
+
+        int[] ans = new int[n];
+        for (int i = 0; i < n; i++) {
+            int end = eArr[i];
+            ans[i] = -1;
+
+            int minStart = Integer.MAX_VALUE;
+            for (int j = 0; j < n; j++) {
+                if (j == i) {
+                    continue;
+                }
+
+                int start = sArr[j];
+                if (start >= end) {
+                    if (minStart > start) {
+                        minStart = start;
+                        ans[i] = j;
+                    }
+                }
+            }
+        }
+
+        return ans;
+    }
+
 }
