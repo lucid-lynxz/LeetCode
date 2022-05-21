@@ -1,5 +1,3 @@
-import util.LinkUtil;
-
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -340,6 +338,12 @@ public class Main {
 //        System.out.println(solution.isPalindrome(LinkUtil.makeListNode())); // true
 
         // 面试题 02.02. 返回倒数第 k 个节点
-        System.out.println(solution.kthToLast(LinkUtil.makeListNode(1, 2, 3, 4, 5), 2)); // 4
+//        System.out.println(solution.kthToLast(LinkUtil.makeListNode(1, 2, 3, 4, 5), 2)); // 4
+
+        // 961. 在长度 2N 的数组中找出重复 N 次的元素
+        System.out.println(solution.repeatedNTimes(new int[]{1, 2, 3, 3})); // 3
+        System.out.println(solution.repeatedNTimes(new int[]{2, 1, 2, 5, 3, 2})); // 2
+        System.out.println(solution.repeatedNTimes(new int[]{5, 1, 5, 2, 5, 3, 5, 4})); // 5
+
     }
 }

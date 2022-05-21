@@ -2550,4 +2550,26 @@ public class Solution {
         int size = list.size();
         return list.get(size - k);
     }
+
+    /**
+     * 961. 在长度 2N 的数组中找出重复 N 次的元素
+     * https://leetcode.cn/problems/n-repeated-element-in-size-2n-array/
+     * <p>
+     * nums.length == 2 * n.
+     * nums 包含 n + 1 个 不同的 元素
+     * nums 中恰有一个元素重复 n 次
+     */
+    public int repeatedNTimes(int[] nums) {
+        int ans = nums[0];
+        Set<Integer> set = new HashSet<>(); // 已出现过的数字
+        for (int num : nums) {
+            // 由于2N中有N+1个不同元素, 因此只要找到出现2次的元素即可
+            if (set.contains(num)) {
+                ans = num;
+                break;
+            }
+            set.add(num);
+        }
+        return ans;
+    }
 }
