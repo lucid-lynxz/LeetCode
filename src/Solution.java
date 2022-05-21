@@ -2597,7 +2597,7 @@ public class Solution {
 
             int minStart = Integer.MAX_VALUE;
             for (int j = 0; j < n; j++) {
-                // ==! leetocde也没说右区间能是自己, 这里不过滤
+                // ==! leetCode也没说右区间能是自己, 这里不过滤
 //                if (j == i) {
 //                    continue;
 //                }
@@ -2612,6 +2612,33 @@ public class Solution {
             }
         }
 
+        return ans;
+    }
+
+
+    /**
+     * 436. 寻找右区间
+     * https://leetcode.cn/problems/find-right-interval/
+     * 由于题目限制了条件:  每个区间起点都不相同, 因此可以对起点进行排序
+     * 同时由于最终需要记录数组元素的下标, 因此使用带排序的treeMap来存储
+     */
+    public int[] findRightInterval2(int[][] intervals) {
+        int n = intervals.length;
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(intervals[i][0], i); // 按顺序存入start和index
+        }
+
+        int[] ans = new int[n];
+        for (int i = 0; i < n; i++) {
+            int end = intervals[i][1];
+            Map.Entry<Integer, Integer> entry = map.ceilingEntry(end);
+            if (entry == null) {
+                ans[i] = -1;
+            } else {
+                ans[i] = entry.getValue();
+            }
+        }
         return ans;
     }
 
