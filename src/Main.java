@@ -351,6 +351,7 @@ public class Main {
         System.out.println(Arrays.toString(solution.findRightInterval(new int[][]{{3, 4}, {2, 3}, {1, 2}}))); // [-1,0,1]
         System.out.println(Arrays.toString(solution.findRightInterval(new int[][]{{1, 2}}))); // [-1]
         System.out.println(Arrays.toString(solution.findRightInterval(new int[][]{{1, 4}, {2, 3}, {3, 4}}))); // [-1,2,-1]
+        System.out.println(Arrays.toString(solution.findRightInterval(new int[][]{{1, 1}, {3, 4}}))); // [0,-1]
 
     }
 }

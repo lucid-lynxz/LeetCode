@@ -2597,9 +2597,10 @@ public class Solution {
 
             int minStart = Integer.MAX_VALUE;
             for (int j = 0; j < n; j++) {
-                if (j == i) {
-                    continue;
-                }
+                // ==! leetocde也没说右区间能是自己, 这里不过滤
+//                if (j == i) {
+//                    continue;
+//                }
 
                 int start = sArr[j];
                 if (start >= end) {
