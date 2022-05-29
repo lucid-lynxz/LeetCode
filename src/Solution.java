@@ -1,5 +1,6 @@
 import bean.ListNode;
 import bean.TreeNode;
+import javafx.util.Pair;
 import util.LinkUtil;
 
 import java.util.*;
@@ -2694,6 +2695,62 @@ public class Solution {
         }
 
         return (int) ans;
+    }
+
+    /**
+     * 1090. 受标签影响的最大值
+     * https://leetcode.cn/problems/largest-values-from-labels/
+     */
+    public int largestValsFromLabels(int[] values, int[] labels, int numWanted, int useLimit) {
+        int n = values.length;
+        List<Pair<Integer, Integer>> list = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) {
+            Pair<Integer, Integer> pair = new Pair<>(values[i], labels[i]);
+            list.add(pair);
+        }
+
+        // 对 value 进行降序排列
+        list.sort((o1, o2) -> {
+            int key1 = o1.getKey();
+            int key2 = o2.getKey();
+            return key2 - key1;
+        });
+
+        // 记录label已使用的次数
+        Map<Integer, Integer> labelCntMap = new HashMap<>();
+        List<Pair<Integer, Integer>> ans = new ArrayList<>(numWanted);
+
+        // 遍历获取子集
+        for (Pair<Integer, Integer> pair : list) {
+            if (ans.size() >= numWanted) {
+                break;
+            }
+
+            int label = pair.getValue();
+            int cnt = labelCntMap.getOrDefault(label, 0);
+            if (cnt >= useLimit) {
+                continue;
+            }
+
+            cnt++;
+            labelCntMap.put(label, cnt);
+            ans.add(pair);
+        }
+
+        // 计算子集的最大值, 得到最终结果
+        int size = ans.size();
+        int sum = 0;
+        int maxSum = 0;
+
+        List<Pair<Integer, Integer>> fAns = new ArrayList<>(numWanted);
+        for (Pair<Integer, Integer> an : ans) {
+            sum += an.getKey();
+            if (sum > maxSum) {
+                maxSum = sum;
+                fAns.add(an);
+            }
+        }
+        return maxSum;
     }
 
 }

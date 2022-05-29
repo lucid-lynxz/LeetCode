@@ -352,8 +352,13 @@ public class Main {
 //        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{1, 1}, {3, 4}}))); // [0,-1]
 
         // 923. 三数之和的多种可能
-        System.out.println(solution.threeSumMulti(new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5}, 8)); // 20
-        System.out.println(solution.threeSumMulti(new int[]{1, 1, 2, 2, 2, 2}, 5)); // 12
+//        System.out.println(solution.threeSumMulti(new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5}, 8)); // 20
+//        System.out.println(solution.threeSumMulti(new int[]{1, 1, 2, 2, 2, 2}, 5)); // 12
+
+        // 1090. 受标签影响的最大值
+        System.out.println(solution.largestValsFromLabels(new int[]{5, 4, 3, 2, 1}, new int[]{1, 1, 2, 2, 3}, 3, 1)); // 9
+        System.out.println(solution.largestValsFromLabels(new int[]{5, 4, 3, 2, 1}, new int[]{1, 3, 3, 3, 2}, 3, 2)); // 12
+        System.out.println(solution.largestValsFromLabels(new int[]{9, 8, 8, 7, 6}, new int[]{0, 0, 0, 1, 1}, 3, 1)); // 16
 
     }
 }
