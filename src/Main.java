@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -348,10 +346,14 @@ public class Main {
 //        System.out.println(solution.repeatedNTimes(new int[]{5, 1, 5, 2, 5, 3, 5, 4})); // 5
 
         // 436. 寻找右区间
-        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{3, 4}, {2, 3}, {1, 2}}))); // [-1,0,1]
-        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{1, 2}}))); // [-1]
-        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{1, 4}, {2, 3}, {3, 4}}))); // [-1,2,-1]
-        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{1, 1}, {3, 4}}))); // [0,-1]
+//        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{3, 4}, {2, 3}, {1, 2}}))); // [-1,0,1]
+//        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{1, 2}}))); // [-1]
+//        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{1, 4}, {2, 3}, {3, 4}}))); // [-1,2,-1]
+//        System.out.println(Arrays.toString(solution.findRightInterval2(new int[][]{{1, 1}, {3, 4}}))); // [0,-1]
+
+        // 923. 三数之和的多种可能
+        System.out.println(solution.threeSumMulti(new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5}, 8)); // 20
+        System.out.println(solution.threeSumMulti(new int[]{1, 1, 2, 2, 2, 2}, 5)); // 12
 
     }
 }
