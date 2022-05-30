@@ -2762,20 +2762,15 @@ public class Solution {
     }
 
     private int dfs1022(TreeNode node, int cur) {
-        int ans = 0;
-        int ncur = (cur << 1) + node.val;
-
-        if (node.left != null) {
-            ans += dfs1022(node.left, ncur);
+        if (node == null) {
+            return 0;
         }
 
-        if (node.right != null) {
-            ans += dfs1022(node.right, ncur);
+        cur = (cur << 1) + node.val; // 当前节点肯定非空, 现有数字左移一位,再把节点值加上
+        if (node.left == null && node.right == null) { // 当前节点是叶节点,则返回结果值
+            return cur;
         }
 
-        if (node.left == null && node.right == null) {
-            return ncur;
-        }
-        return ans;
+        return dfs1022(node.left, cur) + dfs1022(node.right, cur);
     }
 }
