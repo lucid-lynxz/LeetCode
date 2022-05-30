@@ -2753,4 +2753,29 @@ public class Solution {
         return maxSum;
     }
 
+    /**
+     * 1022. 从根到叶的二进制数之和
+     * https://leetcode.cn/problems/sum-of-root-to-leaf-binary-numbers/
+     */
+    public int sumRootToLeaf(TreeNode root) {
+        return dfs1022(root, 0);
+    }
+
+    private int dfs1022(TreeNode node, int cur) {
+        int ans = 0;
+        int ncur = (cur << 1) + node.val;
+
+        if (node.left != null) {
+            ans += dfs1022(node.left, ncur);
+        }
+
+        if (node.right != null) {
+            ans += dfs1022(node.right, ncur);
+        }
+
+        if (node.left == null && node.right == null) {
+            return ncur;
+        }
+        return ans;
+    }
 }
