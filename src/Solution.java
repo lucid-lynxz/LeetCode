@@ -2773,4 +2773,67 @@ public class Solution {
 
         return dfs1022(node.left, cur) + dfs1022(node.right, cur);
     }
+
+    /**
+     * 473. 火柴拼正方形
+     * https://leetcode.cn/problems/matchsticks-to-square/
+     */
+    public boolean makesquare(int[] matchsticks) {
+        // 验证条件: 火柴棒的个数至少要4根
+        int n = matchsticks.length;
+        if (n < 4) {
+            return false;
+        }
+
+        int sum = 0; // 火柴棒总长度
+        int max = matchsticks[0]; // 最长的火柴棒
+        for (int matchstick : matchsticks) {
+            sum += matchstick;
+            max = Math.max(max, matchstick);
+        }
+
+        // 验证条件: 总长度须是4的整数倍
+        if (sum % 4 != 0) {
+            return false;
+        }
+
+        // 验证条件: 最长的火柴棒长度不能大于边长
+        int width = sum / 4;
+        if (max > width) {
+            return false;
+        }
+
+        // 验证条件: 所有火柴棒刚好能组成4条边
+        int[] bucket = new int[]{0, 0, 0, 0};
+        return backtrack(0, matchsticks, width, bucket);
+    }
+
+    /**
+     * 尝试将所有元素分组放入指定数量的桶中
+     *
+     * @param index  元素下标
+     * @param nums   元素数组
+     * @param target 每个桶的高度
+     * @param bucket 桶数组
+     * @return 是否可以全部放满
+     */
+    private boolean backtrack(int index, int[] nums, int target, int[] bucket) {
+        int n = nums.length;
+        if (index >= n) { // 每个元素都放入了桶中,则递归结束, 符合要求
+            return true;
+        }
+
+        for (int i = 0; i < bucket.length; i++) {
+            if (bucket[i] + nums[index] > target) { // 当前桶放不下该元素,继续寻找下一个桶
+                continue;
+            }
+
+            bucket[i] += nums[index]; // 将该元素放入桶中
+            if (backtrack(index + 1, nums, target, bucket)) {// 递归尝试将下一个元素放入桶中
+                return true;  // 所有元素都能放入桶中, 则满足要求, 返回true
+            }
+            bucket[i] -= nums[index];
+        }
+        return false;
+    }
 }

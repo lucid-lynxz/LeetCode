@@ -1,5 +1,3 @@
-import util.TreeNodeUtil;
-
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -363,8 +361,11 @@ public class Main {
 //        System.out.println(solution.largestValsFromLabels(new int[]{9, 8, 8, 7, 6}, new int[]{0, 0, 0, 1, 1}, 3, 1)); // 16
 
         // 1022. 从根到叶的二进制数之和
-        System.out.println(solution.sumRootToLeaf(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 0, 1, 0, 1, 0, 1}))); // 22
-        System.out.println(solution.sumRootToLeaf(TreeNodeUtil.arrayToTreeNode(new Integer[]{0}))); // 0
+//        System.out.println(solution.sumRootToLeaf(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 0, 1, 0, 1, 0, 1}))); // 22
+//        System.out.println(solution.sumRootToLeaf(TreeNodeUtil.arrayToTreeNode(new Integer[]{0}))); // 0
 
+        // 473. 火柴拼正方形
+        System.out.println(solution.makesquare(new int[]{1, 2, 2, 2, 1})); // true
+        //    System.out.println(solution.makesquare(new int[]{3, 3, 3, 3, 4})); // false
     }
 }
