@@ -2836,4 +2836,48 @@ public class Solution {
         }
         return false;
     }
+
+    public Solution() {
+    }
+
+
+    private double radius478 = 0;
+    private double centerX478 = 0;
+    private double centerY478 = 0;
+    private Random random478;
+
+    /**
+     * 478. 在圆内随机生成点
+     * https://leetcode.cn/problems/generate-random-point-in-a-circle/
+     */
+    public Solution(double radius, double x_center, double y_center) {
+        radius478 = radius;
+        centerX478 = x_center;
+        centerY478 = y_center;
+        random478 = new Random();
+    }
+
+    /**
+     * ==! 只过了 7/8 不知道哪里错了
+     */
+    public double[] randPoint478() {
+        // 随机计算一个点, 判断点在圆内时,返回, 否则继续尝试
+        while (true) {
+            double x = random478.nextDouble() * (2 * radius478) + (centerX478 - radius478);
+            double y = random478.nextDouble() * (2 * radius478) + (centerY478 - radius478);
+            if (((x - centerX478) * (x - centerX478) + (y - centerY478) * (y - centerY478)) <= radius478 * radius478) {
+                return new double[]{x, y};
+            }
+        }
+    }
+
+    public double[] randPoint() {
+        while (true) {
+            double x = random478.nextDouble() * (2 * radius478) - radius478;
+            double y = random478.nextDouble() * (2 * radius478) - radius478;
+            if (x * x + y * y <= radius478 * radius478) {
+                return new double[]{centerX478 + x, centerY478 + y};
+            }
+        }
+    }
 }

@@ -366,6 +366,6 @@ public class Main {
 
         // 473. 火柴拼正方形
         System.out.println(solution.makesquare(new int[]{1, 2, 2, 2, 1})); // true
-        //    System.out.println(solution.makesquare(new int[]{3, 3, 3, 3, 4})); // false
+        System.out.println(solution.makesquare(new int[]{3, 3, 3, 3, 4})); // false
     }
 }
