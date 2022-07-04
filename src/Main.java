@@ -365,7 +365,12 @@ public class Main {
 //        System.out.println(solution.sumRootToLeaf(TreeNodeUtil.arrayToTreeNode(new Integer[]{0}))); // 0
 
         // 473. 火柴拼正方形
-        System.out.println(solution.makesquare(new int[]{1, 2, 2, 2, 1})); // true
-        System.out.println(solution.makesquare(new int[]{3, 3, 3, 3, 4})); // false
+//        System.out.println(solution.makesquare(new int[]{1, 2, 2, 2, 1})); // true
+//        System.out.println(solution.makesquare(new int[]{3, 3, 3, 3, 4})); // false
+
+        // 1200. 最小绝对差
+        System.out.println(solution.minimumAbsDifference(new int[]{4, 2, 1, 3})); // [[1,2],[2,3],[3,4]]
+        System.out.println(solution.minimumAbsDifference(new int[]{1, 3, 6, 10, 15})); // [[1,3]]
+        System.out.println(solution.minimumAbsDifference(new int[]{3, 8, -10, 23, 19, -4, -14, 27})); // [[-14,-10],[19,23],[23,27]]
     }
 }

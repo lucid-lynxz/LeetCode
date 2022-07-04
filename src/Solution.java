@@ -2880,4 +2880,38 @@ public class Solution {
             }
         }
     }
+
+    /**
+     * 1200. 最小绝对差
+     * https://leetcode.cn/problems/minimum-absolute-difference/
+     * <p>
+     * 输入：arr = [4,2,1,3]
+     * 输出：[[1,2],[2,3],[3,4]]
+     */
+    public List<List<Integer>> minimumAbsDifference(int[] arr) {
+        Arrays.sort(arr);
+        int len = arr.length;
+        int min = Integer.MAX_VALUE; // 最小差值
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        // 由于要求按升序的顺序返回,因此先对数据自然排序, 然后从小到大遍历
+        for (int i = 0; i < len - 1; i++) {
+            int delta = arr[i + 1] - arr[i];
+
+            if (delta < min) { // 找到更小差值时,清除现有数据
+                ans.clear();
+                min = delta;
+            }
+
+            if (delta == min) { // 当前两个元素差就是最小值, 则加入到结果集中
+                List<Integer> ele = new ArrayList<>();
+                ele.add(arr[i]);
+                ele.add(arr[i + 1]);
+                ans.add(ele);
+            }
+        }
+
+        return ans;
+    }
 }
