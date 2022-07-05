@@ -1,3 +1,8 @@
+import bean.MyCalendar;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -369,8 +374,21 @@ public class Main {
 //        System.out.println(solution.makesquare(new int[]{3, 3, 3, 3, 4})); // false
 
         // 1200. 最小绝对差
-        System.out.println(solution.minimumAbsDifference(new int[]{4, 2, 1, 3})); // [[1,2],[2,3],[3,4]]
-        System.out.println(solution.minimumAbsDifference(new int[]{1, 3, 6, 10, 15})); // [[1,3]]
-        System.out.println(solution.minimumAbsDifference(new int[]{3, 8, -10, 23, 19, -4, -14, 27})); // [[-14,-10],[19,23],[23,27]]
+//        System.out.println(solution.minimumAbsDifference(new int[]{4, 2, 1, 3})); // [[1,2],[2,3],[3,4]]
+//        System.out.println(solution.minimumAbsDifference(new int[]{1, 3, 6, 10, 15})); // [[1,3]]
+//        System.out.println(solution.minimumAbsDifference(new int[]{3, 8, -10, 23, 19, -4, -14, 27})); // [[-14,-10],[19,23],[23,27]]
+
+        // 729. 我的日程安排表 I
+        MyCalendar myCalendar = new MyCalendar();
+        // ["MyCalendar","book","book","book","book","book","book","book","book","book","book"]
+        // [[],[47,50],[33,41],[39,45],[33,42],[25,32],[26,35],[19,25],[3,8],[8,13],[18,27]]
+        int[][] srcArrs = new int[][]{
+                {47, 50}, {33, 41}, {39, 45}, {33, 42}, {25, 32}, {26, 35}, {19, 25}, {3, 8}, {8, 13}, {18, 27}};
+        // 预期结果: [true,  true,   false,     false,    true,     false,     true,    true,   true,    false]
+        List<Boolean> ans = new ArrayList<>();
+        for (int[] item : srcArrs) {
+            ans.add(myCalendar.book(item[0], item[1]));
+        }
+        System.out.println(ans);
     }
 }
