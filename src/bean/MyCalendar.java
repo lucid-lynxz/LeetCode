@@ -28,6 +28,4 @@ public class MyCalendar {
         cache.add(new int[]{start, end});
         return true;
     }
-
-
 }

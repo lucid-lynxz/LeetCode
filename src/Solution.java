@@ -3,6 +3,7 @@ import bean.TreeNode;
 import javafx.util.Pair;
 import util.LinkUtil;
 
+import java.math.BigInteger;
 import java.util.*;
 
 
@@ -2909,6 +2910,33 @@ public class Solution {
                 ele.add(arr[i]);
                 ele.add(arr[i + 1]);
                 ans.add(ele);
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 1018. 可被 5 整除的二进制前缀
+     * https://leetcode.cn/problems/binary-prefix-divisible-by-5/
+     */
+    public List<Boolean> prefixesDivBy5(int[] nums) {
+        int len = nums.length;
+        List<Boolean> ans = new ArrayList<>();
+
+        // 使用移位可能会越界, 因为数组长度可达 10^5 个, long不足以使用
+        // 分为两种情况: 不超过64位前, 使用long来解析 否则使用 bigInteger
+        long value = 0;
+        StringBuilder sb = new StringBuilder(nums.length);
+        BigInteger modValue = new BigInteger("5");
+        for (int i = 0; i < len; i++) {
+            sb.append(nums[i]);
+            if (i <= Long.SIZE) {
+                value = (value << 1) + nums[i];
+                ans.add(value % 5 == 0);
+            } else {
+                BigInteger big = new BigInteger(sb.toString(), 2);
+                BigInteger mod = big.mod(modValue);
+                ans.add(mod.intValue() == 0);
             }
         }
 
