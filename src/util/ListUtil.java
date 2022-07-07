@@ -1,5 +1,6 @@
 package util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListUtil {
@@ -18,5 +19,14 @@ public class ListUtil {
         }
         sb.append("]");
         return sb.toString();
+    }
+
+    public static <T> List<T> convert(T... arr) {
+        int len = arr == null ? 0 : arr.length;
+        List<T> result = new ArrayList<>();
+        for (int i = 0; i < len; i++) {
+            result.add(arr[i]);
+        }
+        return result;
     }
 }

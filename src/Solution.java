@@ -2929,4 +2929,47 @@ public class Solution {
 
         return ans;
     }
+
+    /**
+     * 648. 单词替换
+     * https://leetcode.cn/problems/replace-words/
+     * <p>
+     * 通过后思考:  边界条件判断, 主要是:
+     * 1. 最后一个单词其后不存在空格,因此分词拆分的依据除了空格外, 还应包括 index==len-1
+     * 2. 题目所给示例语句中的最后一个单词刚好能匹配词根, 自测时注意构造不匹配词根的情况
+     * 3. substring拆分时, 最后一个单词的 end 应该是 len
+     */
+    public String replaceWords(List<String> dictionary, String sentence, String expectedAns) {
+        // 先对词根排序, 最短字根就在最前面
+        dictionary.sort(Comparator.comparingInt(String::length));
+        int len = sentence.length();
+        int start = 0;
+        String word = "";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < len; i++) {
+            char c = sentence.charAt(i);
+            if (c == ' ' || i == len - 1) { // 注意最后一个单词后面不会有空格
+                word = sentence.substring(start, i == len - 1 ? len : i); // 注意, 最后一个单词, i需要加1, 因为 exclude
+                start = i + 1; // 跳过本空格
+
+                // 线性搜索可替代的最短字根
+                String hitRoot = null;
+                for (String root : dictionary) {
+                    if (word.startsWith(root)) {
+                        hitRoot = root;
+                        break;
+                    }
+                }
+                sb.append(hitRoot == null ? word : hitRoot);
+                if (i < len - 1) {
+                    sb.append(" ");
+                }
+            }
+        }
+        String ans = sb.toString();
+        if (!ans.equals(expectedAns)) {
+            System.out.println("replaceWords 与预期不符\n\tans=" + ans + "\n\texp=" + expectedAns);
+        }
+        return ans;
+    }
 }
