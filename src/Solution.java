@@ -2972,4 +2972,37 @@ public class Solution {
         }
         return ans;
     }
+
+    /**
+     * 1217. 玩筹码
+     * https://leetcode.cn/problems/minimum-cost-to-move-chips-to-the-same-position/
+     */
+    public int minCostToMoveChips(int[] position, int expectCost) {
+        int len = position.length;
+        if (len <= 1) {
+            return 0;
+        }
+
+        int minCost = Integer.MAX_VALUE;
+        for (int i = 0; i < len; i++) {
+            int cost = 0;
+            int tPos = position[i]; // 目标位置
+            for (int j = 0; j < len; j++) { // 遍历计算其他chip移动到 tPos 所需的 cost
+                if (j == i) {
+                    continue;
+                }
+
+                int pos = position[j];
+                // 一次跳动2步,cost为0, 因此对2取余就是本次cost
+                // 累加后就是全部cost
+                cost += Math.abs((pos - tPos)) % 2;
+            }
+            minCost = Math.min(minCost, cost);
+        }
+
+        if (minCost != expectCost) {
+            System.out.println("error minCost=" + minCost + ",expectCost=" + expectCost);
+        }
+        return minCost;
+    }
 }
