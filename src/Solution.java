@@ -3005,4 +3005,95 @@ public class Solution {
         }
         return minCost;
     }
+
+    /**
+     * 1217. 玩筹码 2
+     * https://leetcode.cn/problems/minimum-cost-to-move-chips-to-the-same-position/
+     */
+    public int minCostToMoveChips2(int[] position, int expectCost) {
+        // 奇(偶) pos 移动到另外的 奇(偶) pos 的 cost = 0
+        // 奇(偶) pos 移动到另外的 偶(奇) pos 的 cost = 1
+        // 因此统计所有奇数个数 和 偶数个数, 取最小值, 就是最终的 cost
+        int odd = 0; // 奇数pos个数
+        int even = 0; // 偶数pos个数
+        for (int pos : position) {
+            // 官方答案求奇偶数时使用了与运算 pos & 1 == 0
+            if (pos % 2 == 0) { // 偶数
+                even++;
+            } else {
+                odd++;
+            }
+        }
+
+        int minCost = Math.min(odd, even);
+        if (minCost != expectCost) {
+            System.out.println("error minCost=" + minCost + ",expectCost=" + expectCost);
+        }
+        return minCost;
+    }
+
+    /**
+     * 873. 最长的斐波那契子序列的长度 O(n^3) 超时了...
+     * https://leetcode.cn/problems/length-of-longest-fibonacci-subsequence/
+     */
+    public int lenLongestFibSubseq(int[] arr, int expectMaxSize) {
+        int len = arr.length;
+        int maxSize = 0; // 最长斐波拉西数列长度
+
+        // 三重遍历, 计算所有斐波拉西数列, 取最大值
+        for (int i = 0; i < len - 2; i++) {
+            for (int j = i + 1; j < len - 1; j++) {
+                int a = arr[i];
+                int b = arr[j];
+                int size = 2;
+                for (int k = j + 1; k < len; k++) {
+                    int cur = arr[k];
+                    if (cur == a + b) {
+                        size++;
+                        a = b;
+                        b = cur;
+                        maxSize = Math.max(size, maxSize);
+                    }
+                }
+            }
+        }
+
+        if (maxSize != expectMaxSize) {
+            System.out.println("error maxSize=" + maxSize + ",expectedMaxSize=" + expectMaxSize);
+        }
+        return maxSize;
+    }
+
+    /**
+     * 873. 最长的斐波那契子序列的长度     * https://leetcode.cn/problems/length-of-longest-fibonacci-subsequence/
+     */
+    public int lenLongestFibSubseq2(int[] arr, int expectMaxSize) {
+        Set<Integer> set = new HashSet<>();
+        for (int item : arr) {
+            set.add(item);
+        }
+
+        int len = arr.length;
+        int maxSize = 0;
+        for (int i = 0; i < len - 2; i++) {
+            for (int j = i + 1; j < len - 1; j++) {
+                int a = arr[i];
+                int b = arr[j];
+                int size = 2;
+                int next = a + b;
+                // 有前两个元素后直接计算得到后一个值, 判断列表中是否包含该元素即可, 相比三重for循环, 可减少几次计算
+                while (set.contains(next)) {
+                    size++;
+                    maxSize = Math.max(maxSize, size);
+                    a = b;
+                    b = next;
+                    next = a + b;
+                }
+            }
+        }
+        if (maxSize != expectMaxSize) {
+            System.out.println("error2 maxSize=" + maxSize + ",expectedMaxSize=" + expectMaxSize);
+        }
+        return maxSize;
+    }
 }

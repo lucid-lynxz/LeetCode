@@ -406,8 +406,20 @@ public class Main {
 //                "i miszkays w gvcfldkiavww v dvypwyb bxahfzcfanteibiltins ueebf lqhflvwxksi dc k w ytzzlm gximjuhzfdjuamhsu gdkbmhpnvy i mengfdydekwttkhbzenk w h ldipovluo a nusquzpmnogtjkklfhta k nxzgnrveghc mpppfhzjkbucv c uwmahhqradjtf i z q yzfragcextvx i i j gzixfeugj rnukjgtjpim h a x h ygelddphxnbh rvjxtlqfnlmwdoezh z i bbfj mhs nenrqfkbf spfpazr w c dtd c dtaxhddidfwqs bgnnoxgyynol h dijhrrpnwjlju muzzrrsypzgwvblf z h q i daee r nlipyfszvxlwqw yoq dewpgtcrzausqwhh q i k bqprarpgnyemzwifqzz oai pnqottd nygesjtlpala q gyvukjpc s mxhlkdaycskj uvwmerplaibeknltuvd ocnn f c pxbd oklwhcppuziixpvihihp");
 
         // 1217. 玩筹码
-        solution.minCostToMoveChips(new int[]{1, 2, 3}, 1);
-        solution.minCostToMoveChips(new int[]{2, 2, 2, 3, 3}, 2);
-        solution.minCostToMoveChips(new int[]{1, 1000000000}, 1);
+//        solution.minCostToMoveChips(new int[]{1, 2, 3}, 1);
+//        solution.minCostToMoveChips(new int[]{2, 2, 2, 3, 3}, 2);
+//        solution.minCostToMoveChips(new int[]{1, 1000000000}, 1);
+//        solution.minCostToMoveChips2(new int[]{1, 2, 3}, 1);
+//        solution.minCostToMoveChips2(new int[]{2, 2, 2, 3, 3}, 2);
+//        solution.minCostToMoveChips2(new int[]{1, 1000000000}, 1);
+
+        // 873. 最长的斐波那契子序列的长度
+        solution.lenLongestFibSubseq(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 5);
+        solution.lenLongestFibSubseq(new int[]{1, 3, 7, 11, 12, 14, 18}, 3);
+        solution.lenLongestFibSubseq(new int[]{2, 4, 7, 8, 9, 10, 14, 15, 18, 23, 32, 50}, 5);
+
+        solution.lenLongestFibSubseq2(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 5);
+        solution.lenLongestFibSubseq2(new int[]{1, 3, 7, 11, 12, 14, 18}, 3);
+        solution.lenLongestFibSubseq2(new int[]{2, 4, 7, 8, 9, 10, 14, 15, 18, 23, 32, 50}, 5);
     }
 }
