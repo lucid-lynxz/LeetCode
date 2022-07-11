@@ -3096,4 +3096,48 @@ public class Solution {
         }
         return maxSize;
     }
+
+    /**
+     * 501. 二叉搜索树中的众数
+     * https://leetcode.cn/problems/find-mode-in-binary-search-tree/
+     */
+    public int[] findMode(TreeNode root) {
+        int maxRepeatCount = 0; // 出现最多的次数
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<TreeNode> stack = new Stack<>();
+
+        // 中序遍历: 左子树 -> 中间节点 -> 右子树
+        // 栈stack: 后进先出
+        TreeNode cur = root;
+        while (!stack.isEmpty() || cur != null) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+
+            TreeNode node = stack.pop();
+            int count = map.getOrDefault(node.val, 0);
+            count++;
+            map.put(node.val, count);
+            maxRepeatCount = Math.max(maxRepeatCount, count);
+            cur = node.right;
+        }
+
+        List<Integer> list = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            int count = entry.getValue();
+            if (maxRepeatCount == count) {
+                list.add(entry.getKey());
+            }
+        }
+
+        int size = list.size();
+        int[] ans = new int[size];
+        for (int i = 0; i < size; i++) {
+            ans[i] = list.get(i);
+        }
+
+        System.out.println(Arrays.toString(ans));
+        return ans;
+    }
 }

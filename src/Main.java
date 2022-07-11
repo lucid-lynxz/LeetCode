@@ -1,3 +1,5 @@
+import util.TreeNodeUtil;
+
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -414,12 +416,17 @@ public class Main {
 //        solution.minCostToMoveChips2(new int[]{1, 1000000000}, 1);
 
         // 873. 最长的斐波那契子序列的长度
-        solution.lenLongestFibSubseq(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 5);
-        solution.lenLongestFibSubseq(new int[]{1, 3, 7, 11, 12, 14, 18}, 3);
-        solution.lenLongestFibSubseq(new int[]{2, 4, 7, 8, 9, 10, 14, 15, 18, 23, 32, 50}, 5);
+//        solution.lenLongestFibSubseq(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 5);
+//        solution.lenLongestFibSubseq(new int[]{1, 3, 7, 11, 12, 14, 18}, 3);
+//        solution.lenLongestFibSubseq(new int[]{2, 4, 7, 8, 9, 10, 14, 15, 18, 23, 32, 50}, 5);
+//
+//        solution.lenLongestFibSubseq2(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 5);
+//        solution.lenLongestFibSubseq2(new int[]{1, 3, 7, 11, 12, 14, 18}, 3);
+//        solution.lenLongestFibSubseq2(new int[]{2, 4, 7, 8, 9, 10, 14, 15, 18, 23, 32, 50}, 5);
 
-        solution.lenLongestFibSubseq2(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 5);
-        solution.lenLongestFibSubseq2(new int[]{1, 3, 7, 11, 12, 14, 18}, 3);
-        solution.lenLongestFibSubseq2(new int[]{2, 4, 7, 8, 9, 10, 14, 15, 18, 23, 32, 50}, 5);
+        // 501. 二叉搜索树中的众数
+        solution.findMode(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, null, 2, 2})); // [2]
+        solution.findMode(TreeNodeUtil.arrayToTreeNode(new Integer[]{1, 1, 2, 2})); // [1,2]
+        solution.findMode(TreeNodeUtil.arrayToTreeNode(new Integer[]{0})); // [0]
     }
 }
