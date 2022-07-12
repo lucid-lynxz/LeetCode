@@ -3140,4 +3140,42 @@ public class Solution {
         System.out.println(Arrays.toString(ans));
         return ans;
     }
+
+    /**
+     * 1252. 奇数值单元格的数目
+     * https://leetcode.cn/problems/cells-with-odd-values-in-a-matrix/
+     */
+    public int oddCells(int m, int n, int[][] indices) {
+        int[][] mnarr = new int[m][n];
+        int oddSize = 0;
+        for (int[] itemArr : indices) {
+            int row = itemArr[0];
+            int col = itemArr[1];
+
+            for (int j = 0; j < m; j++) {
+                for (int k = 0; k < n; k++) {
+                    int ori = mnarr[j][k];
+                    int item = ori;
+                    if (j == row) {
+                        item++;
+                    }
+                    if (k == col) {
+                        item++;
+                    }
+                    mnarr[j][k] = item;
+
+
+                    boolean isOriOdd = (ori & 1) == 1;
+                    boolean isCurOdd = (item & 1) == 1;
+                    if (isOriOdd) {
+                        oddSize += isCurOdd ? 0 : -1;
+                    } else {
+                        oddSize += isCurOdd ? 1 : 0;
+                    }
+                }
+            }
+        }
+        System.out.println(oddSize);
+        return oddSize;
+    }
 }
